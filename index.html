@@ -36,11 +36,11 @@
             --primary: #1d4ed8;
             --primary-dark: #1e3a8a;
             --primary-light: #eff6ff;
-            --income-color: #15803d;      /* Deep High-Contrast Green */
+            --income-color: #15803d;
             --income-btn: #166534;
             --income-bg: #dcfce7;
             --income-border: #86efac;
-            --expense-color: #b91c1c;     /* Deep High-Contrast Red */
+            --expense-color: #b91c1c;
             --expense-btn: #991b1b;
             --expense-bg: #fee2e2;
             --expense-border: #fca5a5;
@@ -84,13 +84,191 @@
         .income-text { color: var(--income-color) !important; font-weight: 700; }
         .expense-text { color: var(--expense-color) !important; font-weight: 700; }
 
-        /* 1-Second Wave Loading Animation Overlay */
+        /* Amount + Calculator Row */
+        .amount-calc-row {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .amount-calc-row input {
+            flex: 1;
+        }
+
+        .calc-mini-btn {
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-subtle);
+            color: var(--text-main);
+            font-size: 0.85rem;
+            font-weight: 800;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: all 0.18s ease;
+        }
+
+        .calc-mini-btn:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+            border-color: #93c5fd;
+        }
+
+        /* Quick Calculator Grid */
+        .calc-screen {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-subtle);
+            font-size: 1.25rem;
+            font-weight: 800;
+            text-align: right;
+            color: var(--text-main);
+            margin-bottom: 12px;
+        }
+
+        .calc-pad {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .calc-key {
+            padding: 12px 6px;
+            border-radius: 10px;
+            border: 1px solid var(--border-light);
+            background: #f8fafc;
+            color: var(--text-main);
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .calc-key:hover {
+            background: var(--primary-light);
+            border-color: #93c5fd;
+        }
+
+        .calc-key.op {
+            background: #e0e7ff;
+            color: var(--wealth-color);
+        }
+
+        .calc-key.eq {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        /* Privacy Eye Icon Only Button */
+        .privacy-toggle-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-subtle);
+            color: var(--text-main);
+            font-size: 1.05rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .privacy-toggle-btn.hidden-mode {
+            background: var(--wealth-bg);
+            color: var(--wealth-color);
+            border-color: #a5b4fc;
+        }
+
+        /* Password Input with Show / Hide Eye Button */
+        .password-input-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .password-input-wrap input {
+            padding-right: 44px;
+        }
+
+        .eye-toggle-btn {
+            position: absolute;
+            right: 10px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+            border-radius: 6px;
+        }
+
+        .eye-toggle-btn:hover {
+            color: var(--primary);
+            background: rgba(29, 78, 216, 0.08);
+        }
+
+        /* Bank + Hand + Flowing Indian Rupee (₹) Logo Animation */
+        .cf-bank-roof {
+            transform-box: fill-box;
+            transform-origin: center;
+            animation: cfBuildingFloat 2.4s ease-in-out infinite;
+        }
+
+        .cf-hand-base {
+            transform-box: fill-box;
+            transform-origin: center;
+            animation: cfHandPulse 2.4s ease-in-out infinite;
+        }
+
+        .cf-rupee-flow {
+            transform-box: fill-box;
+            transform-origin: center;
+            animation: cfRupeeFlow 2.2s ease-in-out infinite;
+        }
+
+        @keyframes cfBuildingFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-2.5px); }
+        }
+
+        @keyframes cfHandPulse {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(1.2px); }
+        }
+
+        @keyframes cfRupeeFlow {
+            0% {
+                opacity: 0;
+                transform: translate(5px, -7px) scale(0.75);
+            }
+            25% {
+                opacity: 1;
+                transform: translate(2px, -3px) scale(1);
+            }
+            75% {
+                opacity: 1;
+                transform: translate(-2px, 3px) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-5px, 7px) scale(0.75);
+            }
+        }
+
+        /* Ultra Modern Loading Animation Overlay (2s) */
         .loading-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(15, 23, 42, 0.45);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
+            background: rgba(9, 13, 22, 0.52);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             display: none;
             justify-content: center;
             align-items: center;
@@ -98,60 +276,97 @@
         }
 
         .loading-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-light);
-            border-radius: 18px;
-            padding: 20px 26px;
-            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.28);
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            border-radius: 24px;
+            padding: 24px 30px;
+            box-shadow: 0 24px 60px rgba(2, 6, 23, 0.35), 0 0 0 1px rgba(29, 78, 216, 0.08);
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
-            min-width: 200px;
+            gap: 14px;
+            min-width: 225px;
+            animation: cfLoaderPop 0.25s ease-out;
         }
 
-        .wave-dots {
+        @keyframes cfLoaderPop {
+            from { opacity: 0; transform: scale(0.92); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .modern-halo-wrap {
+            position: relative;
+            width: 76px;
+            height: 76px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            height: 26px;
         }
 
-        .wave-dots span {
-            width: 10px;
-            height: 10px;
+        .modern-halo-ring {
+            position: absolute;
+            inset: 0;
             border-radius: 50%;
-            animation: cfWaveBounce 0.7s infinite ease-in-out;
+            background: conic-gradient(from 0deg, #1d4ed8, #14b8a6, #22c55e, rgba(29, 78, 216, 0.08));
+            -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3.5px), #000 calc(100% - 3px));
+            mask: radial-gradient(farthest-side, transparent calc(100% - 3.5px), #000 calc(100% - 3px));
+            animation: cfSpinHalo 1s linear infinite;
         }
 
-        .wave-dots span:nth-child(1) { background: #1d4ed8; animation-delay: 0s; }
-        .wave-dots span:nth-child(2) { background: #15803d; animation-delay: 0.12s; }
-        .wave-dots span:nth-child(3) { background: #d97706; animation-delay: 0.24s; }
-        .wave-dots span:nth-child(4) { background: #b91c1c; animation-delay: 0.36s; }
+        @keyframes cfSpinHalo {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-logo-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #ffffff;
+            box-shadow: 0 6px 18px rgba(15, 23, 42, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
 
         .loading-label {
             font-size: 0.9rem;
             font-weight: 800;
             color: var(--text-main);
+            letter-spacing: -0.01em;
         }
 
-        @keyframes cfWaveBounce {
-            0%, 80%, 100% {
-                transform: translateY(0) scale(0.85);
-                opacity: 0.55;
-            }
-            40% {
-                transform: translateY(-8px) scale(1.15);
-                opacity: 1;
-            }
+        .loading-sub-bar {
+            width: 120px;
+            height: 4px;
+            border-radius: 999px;
+            background: #e2e8f0;
+            overflow: hidden;
+            position: relative;
         }
 
-        /* Premium Animated Login / Sign Up Screen */
+        .loading-sub-bar::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -45%;
+            width: 45%;
+            height: 100%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #1d4ed8, #14b8a6);
+            animation: cfSlideBar 2s ease-in-out infinite;
+        }
+
+        @keyframes cfSlideBar {
+            0% { left: -45%; }
+            100% { left: 100%; }
+        }
+
+        /* Premium Animated Login / Sign Up Screen + Green Income / Red Expense Flow Background */
         .login-wrapper {
             position: fixed;
             inset: 0;
-            background: linear-gradient(135deg, #090d16 0%, #172554 48%, #1d4ed8 100%);
+            background: linear-gradient(135deg, #090d16 0%, #172554 50%, #0f172a 100%);
             background-size: 200% 200%;
             animation: cfBgShift 10s ease infinite;
             display: flex;
@@ -168,15 +383,84 @@
             100% { background-position: 0% 50%; }
         }
 
+        .login-flow-bg {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .flow-amt {
+            position: absolute;
+            bottom: -48px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+            opacity: 0;
+            animation: cfAmtFloatUp 8s linear infinite;
+            user-select: none;
+        }
+
+        .flow-amt.inc-flow {
+            color: #4ade80;
+            background: rgba(21, 128, 61, 0.22);
+            border: 1px solid rgba(74, 222, 128, 0.45);
+            box-shadow: 0 6px 18px rgba(21, 128, 61, 0.25);
+        }
+
+        .flow-amt.exp-flow {
+            color: #f87171;
+            background: rgba(185, 28, 28, 0.22);
+            border: 1px solid rgba(248, 113, 113, 0.45);
+            box-shadow: 0 6px 18px rgba(185, 28, 28, 0.25);
+        }
+
+        .flow-amt:nth-child(1) { left: 7%; animation-duration: 7.5s; animation-delay: 0s; }
+        .flow-amt:nth-child(2) { left: 19%; animation-duration: 8.8s; animation-delay: 1.4s; }
+        .flow-amt:nth-child(3) { left: 32%; animation-duration: 7.2s; animation-delay: 2.8s; }
+        .flow-amt:nth-child(4) { left: 46%; animation-duration: 9.2s; animation-delay: 0.9s; }
+        .flow-amt:nth-child(5) { left: 60%; animation-duration: 7.8s; animation-delay: 2.2s; }
+        .flow-amt:nth-child(6) { left: 74%; animation-duration: 8.5s; animation-delay: 3.6s; }
+        .flow-amt:nth-child(7) { left: 86%; animation-duration: 7.6s; animation-delay: 1.8s; }
+        .flow-amt:nth-child(8) { left: 13%; animation-duration: 9.5s; animation-delay: 4.5s; }
+        .flow-amt:nth-child(9) { left: 53%; animation-duration: 8.2s; animation-delay: 5.1s; }
+        .flow-amt:nth-child(10) { left: 80%; animation-duration: 9s; animation-delay: 4.2s; }
+
+        @keyframes cfAmtFloatUp {
+            0% {
+                transform: translateY(0) translateX(0) scale(0.92);
+                opacity: 0;
+            }
+            12% {
+                opacity: 0.92;
+            }
+            50% {
+                transform: translateY(-52vh) translateX(14px) scale(1);
+                opacity: 0.85;
+            }
+            88% {
+                opacity: 0.75;
+            }
+            100% {
+                transform: translateY(-108vh) translateX(-10px) scale(0.96);
+                opacity: 0;
+            }
+        }
+
         .login-box {
-            background: rgba(255, 255, 255, 0.98);
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.97);
             padding: 32px 28px;
             border-radius: 22px;
             width: 100%;
             max-width: 425px;
-            box-shadow: 0 24px 60px rgba(2, 6, 23, 0.5);
+            box-shadow: 0 24px 60px rgba(2, 6, 23, 0.55);
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.65);
             animation: cfCardPop 0.45s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -224,7 +508,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             margin-bottom: 6px;
         }
 
@@ -302,16 +586,16 @@
         }
 
         .brand-logo-wrap {
-            width: 44px;
-            height: 44px;
+            width: 48px;
+            height: 48px;
             border-radius: 13px;
-            background: linear-gradient(135deg, #0b1120 0%, #1e3a8a 60%, #065f46 100%);
-            border: 1px solid rgba(56, 189, 248, 0.45);
+            background: #ffffff;
+            border: 1px solid var(--border-light);
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            box-shadow: 0 6px 16px rgba(15, 23, 42, 0.22);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
         }
 
         .brand-info {
@@ -482,7 +766,7 @@
             display: block;
         }
 
-        /* Dashboard Select Month Bar & 5-Card Executive Grid */
+        /* Dashboard Month & Year Selector Bar + 5-Card Grid */
         .monthly-filter-card {
             background: var(--bg-card);
             border: 1px solid var(--border-light);
@@ -1471,39 +1755,70 @@
 </head>
 <body>
 
-<!-- 1-Second Wave Loading Animation Overlay -->
+<!-- Ultra Modern Loading Animation Overlay (2s) -->
 <div class="loading-overlay" id="loadingOverlay" aria-live="polite">
     <div class="loading-card">
-        <div class="wave-dots">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+        <div class="modern-halo-wrap">
+            <div class="modern-halo-ring"></div>
+            <div class="loading-logo-box">
+                <svg width="34" height="34" viewBox="0 0 64 64" fill="none">
+                    <g class="cf-bank-roof">
+                        <polygon points="30,6 12,15 48,15" fill="#2dd4bf"></polygon>
+                        <rect x="14" y="15" width="32" height="3.5" fill="#14b8a6"></rect>
+                        <rect x="16" y="18.5" width="3.8" height="12.5" rx="1" fill="#2dd4bf"></rect>
+                        <rect x="23.5" y="18.5" width="3.8" height="12.5" rx="1" fill="#2dd4bf"></rect>
+                        <rect x="31" y="18.5" width="3.8" height="12.5" rx="1" fill="#2dd4bf"></rect>
+                        <rect x="38.5" y="18.5" width="3.8" height="12.5" rx="1" fill="#2dd4bf"></rect>
+                        <rect x="12" y="31" width="36" height="3.5" rx="1" fill="#14b8a6"></rect>
+                    </g>
+                    <g class="cf-rupee-flow">
+                        <text x="45" y="29" fill="#15803d" font-size="16" font-weight="900">₹</text>
+                    </g>
+                    <g class="cf-hand-base">
+                        <path d="M9 47C12 44 17 43 22 45L35 49C38 50 41 48 44 45L52 39C54 38 56.5 40 55 42.5L46 52C43 55 38 56 33 55L17 52L9 54Z" fill="#ffffff" stroke="#0f172a" stroke-width="3.6" stroke-linejoin="round"></path>
+                    </g>
+                </svg>
+            </div>
         </div>
         <span class="loading-label" id="loadingText">Loading CashFlow...</span>
+        <div class="loading-sub-bar"></div>
     </div>
 </div>
 
-<!-- Professional CashFlow SVG Logo Definition -->
-<svg width="0" height="0" style="position:absolute;visibility:hidden;" aria-hidden="true">
-    <defs>
-        <linearGradient id="cfProLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#38bdf8"></stop>
-            <stop offset="55%" stop-color="#60a5fa"></stop>
-            <stop offset="100%" stop-color="#34d399"></stop>
-        </linearGradient>
-    </defs>
-</svg>
-
-<!-- 1. PREMIUM ANIMATED LOGIN / SIGN UP SCREEN -->
+<!-- 1. PREMIUM ANIMATED LOGIN / SIGN UP SCREEN WITH GREEN INCOME & RED EXPENSE FLOW -->
 <div class="login-wrapper" id="loginScreen">
+    <div class="login-flow-bg" aria-hidden="true">
+        <span class="flow-amt inc-flow">+ ₹1,200</span>
+        <span class="flow-amt exp-flow">- ₹350</span>
+        <span class="flow-amt inc-flow">+ ₹5,000</span>
+        <span class="flow-amt exp-flow">- ₹850</span>
+        <span class="flow-amt inc-flow">+ ₹750</span>
+        <span class="flow-amt exp-flow">- ₹1,400</span>
+        <span class="flow-amt inc-flow">+ ₹2,500</span>
+        <span class="flow-amt exp-flow">- ₹220</span>
+        <span class="flow-amt inc-flow">+ ₹900</span>
+        <span class="flow-amt exp-flow">- ₹600</span>
+    </div>
+
     <div class="login-box">
         <div class="login-logo-row">
             <div class="brand-logo-wrap">
-                <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
-                    <rect x="4" y="4" width="20" height="20" rx="6" stroke="url(#cfProLogoGrad)" stroke-width="2.2"></rect>
-                    <path d="M9 17.5C11 14 13.5 14.5 15.5 11.5C17 9.2 18.5 9.5 19.5 8.5" stroke="#34d399" stroke-width="2.4" stroke-linecap="round"></path>
-                    <path d="M16.5 8.5H19.5V11.5" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <svg width="32" height="32" viewBox="0 0 64 64" fill="none">
+                    <g class="cf-bank-roof">
+                        <polygon points="30,6 12,15 48,15" fill="#2dd4bf"></polygon>
+                        <rect x="14" y="15" width="32" height="3.5" fill="#14b8a6"></rect>
+                        <rect x="16" y="18.5" width="3.8" height="12.5" rx="1" fill="#2dd4bf"></rect>
+                        <rect x="23.5" y="18.5" width="3.8" height="12.5" rx="1" fill="#2dd4bf"></rect>
+                        <rect x="31" y="18.5" width="3.8" height="12.5" rx="1" fill="#2dd4bf"></rect>
+                        <rect x="38.5" y="18.5" width="3.8" height="12.5" rx="1" fill="#2dd4bf"></rect>
+                        <rect x="12" y="31" width="36" height="3.5" rx="1" fill="#14b8a6"></rect>
+                    </g>
+                    <g class="cf-rupee-flow">
+                        <text x="45" y="29" fill="#15803d" font-size="16" font-weight="900">₹</text>
+                    </g>
+                    <g class="cf-hand-base">
+                        <path d="M9 47C12 44 17 43 22 45L35 49C38 50 41 48 44 45L52 39C54 38 56.5 40 55 42.5L46 52C43 55 38 56 33 55L17 52L9 54Z" fill="#ffffff" stroke="#0f172a" stroke-width="3.6" stroke-linejoin="round"></path>
+                    </g>
                 </svg>
             </div>
             <span class="login-brand-text">CashFlow</span>
@@ -1521,7 +1836,10 @@
             <form id="loginForm">
                 <div class="form-group" style="margin-bottom: 18px;">
                     <label for="loginPass">Password</label>
-                    <input type="password" id="loginPass" placeholder="Enter password" required>
+                    <div class="password-input-wrap">
+                        <input type="password" id="loginPass" placeholder="Enter password" required>
+                        <button type="button" class="eye-toggle-btn" onclick="togglePasswordVisibility('loginPass', this)" title="Show / Hide Password" aria-label="Show or hide password">👁</button>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Login</button>
             </form>
@@ -1538,7 +1856,10 @@
                 </div>
                 <div class="form-group" style="margin-bottom: 12px;">
                     <label for="setupPass">Password</label>
-                    <input type="password" id="setupPass" placeholder="Create a password" required>
+                    <div class="password-input-wrap">
+                        <input type="password" id="setupPass" placeholder="Create a password" required>
+                        <button type="button" class="eye-toggle-btn" onclick="togglePasswordVisibility('setupPass', this)" title="Show / Hide Password" aria-label="Show or hide password">👁</button>
+                    </div>
                 </div>
                 <div class="form-group" style="margin-bottom: 16px;">
                     <label for="setupPin">Recovery PIN (Optional — for Forgot Password)</label>
@@ -1558,10 +1879,22 @@
         <div class="header-shell">
             <div class="header-left">
                 <div class="brand-logo-wrap">
-                    <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
-                        <rect x="4" y="4" width="20" height="20" rx="6" stroke="url(#cfProLogoGrad)" stroke-width="2.2"></rect>
-                        <path d="M9 17.5C11 14 13.5 14.5 15.5 11.5C17 9.2 18.5 9.5 19.5 8.5" stroke="#34d399" stroke-width="2.4" stroke-linecap="round"></path>
-                        <path d="M16.5 8.5H19.5V11.5" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <svg width="32" height="32" viewBox="0 0 64 64" fill="none">
+                        <g class="cf-bank-roof">
+                            <polygon points="30,6 12,15 48,15" fill="#2dd4bf"></polygon>
+                            <rect x="14" y="15" width="32" height="3.5" fill="#14b8a6"></rect>
+                            <rect x="16" y="18.5" width="3.8" height="12.5" rx="1" fill="#2dd4bf"></rect>
+                            <rect x="23.5" y="18.5" width="3.8" height="12.5" rx="1" fill="#2dd4bf"></rect>
+                            <rect x="31" y="18.5" width="3.8" height="12.5" rx="1" fill="#2dd4bf"></rect>
+                            <rect x="38.5" y="18.5" width="3.8" height="12.5" rx="1" fill="#2dd4bf"></rect>
+                            <rect x="12" y="31" width="36" height="3.5" rx="1" fill="#14b8a6"></rect>
+                        </g>
+                        <g class="cf-rupee-flow">
+                            <text x="45" y="29" fill="#15803d" font-size="16" font-weight="900">₹</text>
+                        </g>
+                        <g class="cf-hand-base">
+                            <path d="M9 47C12 44 17 43 22 45L35 49C38 50 41 48 44 45L52 39C54 38 56.5 40 55 42.5L46 52C43 55 38 56 33 55L17 52L9 54Z" fill="#ffffff" stroke="#0f172a" stroke-width="3.6" stroke-linejoin="round"></path>
+                        </g>
                     </svg>
                 </div>
                 <div class="brand-info">
@@ -1570,7 +1903,7 @@
                         <span class="storage-status-dot" id="headerStatusLight" title="Local Storage (Blue) / Online Supabase (Green)"></span>
                     </div>
                     <div class="header-slogan">Track Every Rupee, Grow Every Day</div>
-                    <div class="live-datetime" id="liveDateTime">Sun, Nov 22 • 06:28 AM</div>
+                    <div class="live-datetime" id="liveDateTime"></div>
                 </div>
             </div>
 
@@ -1704,12 +2037,19 @@
 
         <!-- 1. DASHBOARD -->
         <section id="tab-dashboard" class="tab-section active">
-            <!-- Select Month Bar (Current & Past Months Only) -->
+            <!-- Select Month & Year Bar + Privacy Eye Icon Only -->
             <div class="monthly-filter-card">
                 <div class="monthly-selector-wrap">
                     <label for="dashMonthSelect">Select Month:</label>
                     <input type="month" id="dashMonthSelect" onchange="handleDashboardMonthChange()">
                 </div>
+                <button type="button" class="privacy-toggle-btn" id="privacyModeBtn" onclick="togglePrivacyMode()" title="Hide / Show Balances" aria-label="Hide or show balances">
+                    <span id="privacyEyeIcon">👁</span>
+                </button>
+            </div>
+
+            <div id="overdueLoanAlertBox" class="alert-banner danger">
+                <div id="overdueLoanAlertText"></div>
             </div>
 
             <div id="budgetAlertBox" class="alert-banner warn">
@@ -1726,7 +2066,7 @@
             <div class="dashboard-cards-grid">
                 <div class="metric-card inc-metric">
                     <div class="metric-info">
-                        <div class="metric-label" data-i18n="totalIncome">TOTAL INCOME</div>
+                        <div class="metric-label" id="dashIncomeLabel">INCOME</div>
                         <div class="metric-value val-income" id="dashIncome">₹0.00</div>
                     </div>
                     <div class="metric-icon-box icon-bg-income">
@@ -1739,7 +2079,7 @@
 
                 <div class="metric-card exp-metric">
                     <div class="metric-info">
-                        <div class="metric-label" data-i18n="totalExpenses">TOTAL EXPENSES</div>
+                        <div class="metric-label" id="dashExpenseLabel">EXPENSES</div>
                         <div class="metric-value val-expense" id="dashExpense">₹0.00</div>
                     </div>
                     <div class="metric-icon-box icon-bg-expense">
@@ -1808,7 +2148,10 @@
                     <div class="record-form-grid">
                         <div class="form-group">
                             <label for="incAmount" data-i18n="amountLabel">Amount (₹)</label>
-                            <input type="number" id="incAmount" step="0.01" min="0.01" placeholder="0.00" required>
+                            <div class="amount-calc-row">
+                                <input type="number" id="incAmount" step="0.01" min="0.01" placeholder="0.00" required>
+                                <button type="button" class="calc-mini-btn" onclick="openQuickCalc('incAmount')" title="Open Quick Calculator">🧮</button>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="incAccount" data-i18n="depositToLabel">Deposit To Account</label>
@@ -1864,7 +2207,10 @@
                     <div class="record-form-grid">
                         <div class="form-group">
                             <label for="expAmount" data-i18n="amountLabel">Amount (₹)</label>
-                            <input type="number" id="expAmount" step="0.01" min="0.01" placeholder="0.00" required>
+                            <div class="amount-calc-row">
+                                <input type="number" id="expAmount" step="0.01" min="0.01" placeholder="0.00" required>
+                                <button type="button" class="calc-mini-btn" onclick="openQuickCalc('expAmount')" title="Open Quick Calculator">🧮</button>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="expAccount" data-i18n="paidFromLabel">Paid From Account (Cash / Bank)</label>
@@ -1923,7 +2269,7 @@
                             </div>
                             <div>
                                 <div class="hub-card-title">1. Loan</div>
-                                <div class="hub-card-sub">Principal + Interest, party summary & ledger</div>
+                                <div class="hub-card-sub">Principal + Interest, due date, repayment log & ledger</div>
                             </div>
                         </div>
                         <svg class="settings-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1941,7 +2287,7 @@
                             </div>
                             <div>
                                 <div class="hub-card-title">2. Bills</div>
-                                <div class="hub-card-sub">Daily & monthly recurring bills & reminders</div>
+                                <div class="hub-card-sub">Recurring bills, reminders & Pay Now</div>
                             </div>
                         </div>
                         <svg class="settings-chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1986,6 +2332,10 @@
                                 <input type="number" id="loanInterestAmt" step="0.01" min="0" value="0" placeholder="100" oninput="updateLoanTotalPreview()">
                             </div>
                             <div class="form-group">
+                                <label for="loanDueDate">Due Date (Optional)</label>
+                                <input type="date" id="loanDueDate">
+                            </div>
+                            <div class="form-group full-width">
                                 <label for="loanNote">Note / Reference</label>
                                 <input type="text" id="loanNote" placeholder="e.g., Bank Transfer / UPI / Cash">
                             </div>
@@ -2030,11 +2380,30 @@
                                     <th>Principal (₹)</th>
                                     <th>Interest (₹)</th>
                                     <th>Total Due (₹)</th>
-                                    <th>Status</th>
+                                    <th>Due Date & Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody id="loansTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="history-heading">Loan Repayment Log</div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Party</th>
+                                    <th>Type</th>
+                                    <th>Account</th>
+                                    <th>Note</th>
+                                    <th>Amount (₹)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="loanRepaymentLogBody"></tbody>
                         </table>
                     </div>
                 </div>
@@ -2069,6 +2438,10 @@
                             <div class="form-group">
                                 <label for="billDueDay">Due Day (1–28 for Monthly)</label>
                                 <input type="number" id="billDueDay" min="1" max="28" value="5" required>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="billPayAccount">Pay From Account (for Pay Now)</label>
+                                <select id="billPayAccount" required></select>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Add Bill</button>
@@ -2384,7 +2757,10 @@
                             </div>
                             <div class="form-group">
                                 <label for="sbKeyInput">Supabase Anon / Public Key</label>
-                                <input type="password" id="sbKeyInput" placeholder="eyJ...">
+                                <div class="password-input-wrap">
+                                    <input type="password" id="sbKeyInput" placeholder="eyJ...">
+                                    <button type="button" class="eye-toggle-btn" onclick="togglePasswordVisibility('sbKeyInput', this)" title="Show / Hide Key" aria-label="Show or hide key">👁</button>
+                                </div>
                             </div>
                             <div class="form-group full-width">
                                 <label for="sbTableInput">Main State Table Name (default: cashflow_state)</label>
@@ -2407,7 +2783,10 @@
                         Enter your CashFlow login password to unlock and view the SQL setup script.
                     </p>
                     <div id="sqlLockGate" style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:12px;">
-                        <input type="password" id="sqlUnlockPassInput" placeholder="Enter your login password" style="max-width:260px; padding:10px 12px; border:1px solid var(--border-color); border-radius:10px; background:var(--bg-subtle);">
+                        <div class="password-input-wrap" style="max-width:260px;">
+                            <input type="password" id="sqlUnlockPassInput" placeholder="Enter your login password" style="padding:10px 42px 10px 12px; border:1px solid var(--border-color); border-radius:10px; background:var(--bg-subtle);">
+                            <button type="button" class="eye-toggle-btn" onclick="togglePasswordVisibility('sqlUnlockPassInput', this)" title="Show / Hide Password" aria-label="Show or hide password">👁</button>
+                        </div>
                         <button type="button" class="btn btn-primary" style="width:auto;" onclick="unlockSupabaseSql()">Unlock SQL Script</button>
                     </div>
                     <div id="sqlUnlockedPanel" style="display:none;">
@@ -2543,7 +2922,10 @@ for all to anon, authenticated using (true) with check (true);</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="editUserPass">New Password (leave blank to keep current)</label>
-                                <input type="password" id="editUserPass" placeholder="Enter new password">
+                                <div class="password-input-wrap">
+                                    <input type="password" id="editUserPass" placeholder="Enter new password">
+                                    <button type="button" class="eye-toggle-btn" onclick="togglePasswordVisibility('editUserPass', this)" title="Show / Hide Password" aria-label="Show or hide password">👁</button>
+                                </div>
                             </div>
                             <div class="form-group full-width">
                                 <label for="editUserPin">Recovery PIN (for Forgot Password Reset)</label>
@@ -2757,6 +3139,42 @@ for all to anon, authenticated using (true) with check (true);</textarea>
     </div>
 </div>
 
+<!-- QUICK CALCULATOR MODAL -->
+<div class="modal-overlay" id="quickCalcModal">
+    <div class="modal-box" style="max-width:340px;">
+        <h4>Quick Calculator</h4>
+        <input type="text" id="calcExprDisplay" class="calc-screen" value="0" readonly>
+        <div class="calc-pad">
+            <button type="button" class="calc-key op" onclick="calcClear()">C</button>
+            <button type="button" class="calc-key op" onclick="calcBackspace()">⌫</button>
+            <button type="button" class="calc-key op" onclick="calcAppend('/')">÷</button>
+            <button type="button" class="calc-key op" onclick="calcAppend('*')">×</button>
+
+            <button type="button" class="calc-key" onclick="calcAppend('7')">7</button>
+            <button type="button" class="calc-key" onclick="calcAppend('8')">8</button>
+            <button type="button" class="calc-key" onclick="calcAppend('9')">9</button>
+            <button type="button" class="calc-key op" onclick="calcAppend('-')">−</button>
+
+            <button type="button" class="calc-key" onclick="calcAppend('4')">4</button>
+            <button type="button" class="calc-key" onclick="calcAppend('5')">5</button>
+            <button type="button" class="calc-key" onclick="calcAppend('6')">6</button>
+            <button type="button" class="calc-key op" onclick="calcAppend('+')">+</button>
+
+            <button type="button" class="calc-key" onclick="calcAppend('1')">1</button>
+            <button type="button" class="calc-key" onclick="calcAppend('2')">2</button>
+            <button type="button" class="calc-key" onclick="calcAppend('3')">3</button>
+            <button type="button" class="calc-key eq" onclick="calcEvaluate()">=</button>
+
+            <button type="button" class="calc-key" style="grid-column: span 2;" onclick="calcAppend('0')">0</button>
+            <button type="button" class="calc-key" onclick="calcAppend('.')">.</button>
+            <button type="button" class="calc-key eq" onclick="applyQuickCalcValue()">Use</button>
+        </div>
+        <div class="modal-actions">
+            <button type="button" class="btn btn-secondary" onclick="closeQuickCalc()">Close</button>
+        </div>
+    </div>
+</div>
+
 <!-- RECEIPT MODAL -->
 <div class="modal-overlay" id="receiptModal">
     <div class="modal-box" style="max-width:460px;">
@@ -2787,7 +3205,10 @@ for all to anon, authenticated using (true) with check (true);</textarea>
             </div>
             <div class="form-group" style="margin-bottom:16px;">
                 <label for="forgotNewPassInput">New Password</label>
-                <input type="password" id="forgotNewPassInput" placeholder="Enter new password" required>
+                <div class="password-input-wrap">
+                    <input type="password" id="forgotNewPassInput" placeholder="Enter new password" required>
+                    <button type="button" class="eye-toggle-btn" onclick="togglePasswordVisibility('forgotNewPassInput', this)" title="Show / Hide Password" aria-label="Show or hide password">👁</button>
+                </div>
             </div>
             <div class="modal-actions">
                 <button type="button" class="btn btn-secondary" onclick="closeForgotPasswordModal()">Cancel</button>
@@ -2873,8 +3294,8 @@ for all to anon, authenticated using (true) with check (true);</textarea>
 </div>
 
 <script>
-    const STORAGE_KEY = 'cashflow_v3_no_future_date';
-    const DEFAULT_LOADING_MS = 1000;
+    const STORAGE_KEY = 'cashflow_repayment_log_eye_icon_v1';
+    const DEFAULT_LOADING_MS = 2000;
     const IDLE_TIMEOUT_MS = 120000;
 
     const TRANSLATIONS = {
@@ -2884,8 +3305,8 @@ for all to anon, authenticated using (true) with check (true);</textarea>
             navExpenses: 'Expenses',
             navLoan: 'Loan',
             navHistory: 'History',
-            totalIncome: 'TOTAL INCOME',
-            totalExpenses: 'TOTAL EXPENSES',
+            incomeLabel: 'INCOME',
+            expenseLabel: 'EXPENSES',
             bankBalance: 'BANK BALANCE',
             liquidCash: 'LIQUID CASH',
             netWealth: 'NET TOTAL WEALTH',
@@ -2912,8 +3333,8 @@ for all to anon, authenticated using (true) with check (true);</textarea>
             navExpenses: 'செலவு',
             navLoan: 'கடன்',
             navHistory: 'வரலாறு',
-            totalIncome: 'மொத்த வரவு',
-            totalExpenses: 'மொத்த செலவு',
+            incomeLabel: 'வரவு',
+            expenseLabel: 'செலவு',
             bankBalance: 'வங்கி இருப்பு',
             liquidCash: 'கையிருப்பு ரொக்கம்',
             netWealth: 'மொத்த இருப்பு',
@@ -2935,6 +3356,16 @@ for all to anon, authenticated using (true) with check (true);</textarea>
             langSub: 'தற்போதைய மொழி: தமிழ்'
         }
     };
+
+    function togglePasswordVisibility(inputId, btnEl) {
+        const input = document.getElementById(inputId);
+        if (!input) return;
+        const isHidden = input.type === 'password';
+        input.type = isHidden ? 'text' : 'password';
+        if (btnEl) {
+            btnEl.textContent = isHidden ? '🙈' : '👁';
+        }
+    }
 
     function escapeHTML(str) {
         return String(str ?? '')
@@ -2975,6 +3406,7 @@ for all to anon, authenticated using (true) with check (true);</textarea>
             linkedFolderName: '',
             autoLock: true,
             pastDateLock: false,
+            privacyMode: false,
             budget: { monthlyLimit: 0, alertPercent: 80 },
             branding: { name: 'CashFlow Statement', address: 'Track Every Rupee, Grow Every Day', logoDataUrl: '' },
             supabase: { url: '', key: '', table: 'cashflow_state' },
@@ -3017,6 +3449,86 @@ for all to anon, authenticated using (true) with check (true);</textarea>
     let loadingTimer = null;
     let idleTimer = null;
     let linkedFolderHandle = null;
+    let activeCalcTargetInputId = null;
+
+    function formatCurrency(val) {
+        if (appData.privacyMode) return '₹****.**';
+        return `₹${(parseFloat(val) || 0).toFixed(2)}`;
+    }
+
+    function togglePrivacyMode() {
+        appData.privacyMode = !appData.privacyMode;
+        saveData();
+        renderPrivacyToggleUI();
+        renderDashboard();
+    }
+
+    function renderPrivacyToggleUI() {
+        const btn = document.getElementById('privacyModeBtn');
+        const iconEl = document.getElementById('privacyEyeIcon');
+        if (!btn) return;
+        const hidden = Boolean(appData.privacyMode);
+        btn.classList.toggle('hidden-mode', hidden);
+        if (iconEl) iconEl.textContent = hidden ? '🙈' : '👁';
+    }
+
+    /* Quick Calculator Popup Logic */
+    function openQuickCalc(targetInputId) {
+        activeCalcTargetInputId = targetInputId;
+        const srcInput = document.getElementById(targetInputId);
+        const currentVal = srcInput && srcInput.value ? String(parseFloat(srcInput.value) || '0') : '0';
+        document.getElementById('calcExprDisplay').value = currentVal;
+        document.getElementById('quickCalcModal').style.display = 'flex';
+    }
+
+    function closeQuickCalc() {
+        document.getElementById('quickCalcModal').style.display = 'none';
+        activeCalcTargetInputId = null;
+    }
+
+    function calcClear() {
+        document.getElementById('calcExprDisplay').value = '0';
+    }
+
+    function calcBackspace() {
+        const disp = document.getElementById('calcExprDisplay');
+        disp.value = disp.value.length > 1 ? disp.value.slice(0, -1) : '0';
+    }
+
+    function calcAppend(ch) {
+        const disp = document.getElementById('calcExprDisplay');
+        if (disp.value === '0' && /[0-9.]/.test(ch)) {
+            disp.value = ch;
+        } else {
+            disp.value += ch;
+        }
+    }
+
+    function calcEvaluate() {
+        const disp = document.getElementById('calcExprDisplay');
+        try {
+            const clean = disp.value.replace(/[^0-9+\-*/.]/g, '');
+            if (!clean) return;
+            const res = Function('"use strict"; return (' + clean + ')')();
+            if (typeof res === 'number' && Number.isFinite(res)) {
+                disp.value = String(parseFloat(res.toFixed(2)));
+            } else {
+                disp.value = '0';
+            }
+        } catch (err) {
+            disp.value = '0';
+        }
+    }
+
+    function applyQuickCalcValue() {
+        calcEvaluate();
+        const val = parseFloat(document.getElementById('calcExprDisplay').value);
+        if (activeCalcTargetInputId && !isNaN(val) && val > 0) {
+            const target = document.getElementById(activeCalcTargetInputId);
+            if (target) target.value = val.toFixed(2);
+        }
+        closeQuickCalc();
+    }
 
     function isAppUnlocked() {
         const appEl = document.getElementById('appContent');
@@ -3149,6 +3661,19 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         }
     }
 
+    function runAfterLoading(label, workFn, afterFn, durationMs = DEFAULT_LOADING_MS) {
+        showLoading(label, 0);
+        setTimeout(async () => {
+            let result;
+            try {
+                if (workFn) result = await workFn();
+            } finally {
+                hideLoading();
+                if (afterFn) afterFn(result);
+            }
+        }, durationMs);
+    }
+
     function hideLoading() {
         clearTimeout(loadingTimer);
         const overlay = document.getElementById('loadingOverlay');
@@ -3249,6 +3774,7 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         const dict = TRANSLATIONS[lang];
 
         document.querySelectorAll('[data-i18n]').forEach(el => {
+            if (el.id === 'dashIncomeLabel' || el.id === 'dashExpenseLabel') return;
             const key = el.getAttribute('data-i18n');
             if (dict[key]) el.textContent = dict[key];
         });
@@ -3265,10 +3791,12 @@ for all to anon, authenticated using (true) with check (true);</textarea>
     }
 
     function setLanguage(langCode) {
-        showLoading('Updating language...');
-        appData.language = langCode === 'ta' ? 'ta' : 'en';
-        saveData();
-        applyLanguage();
+        runAfterLoading('Updating language...', () => {
+            appData.language = langCode === 'ta' ? 'ta' : 'en';
+            saveData();
+            applyLanguage();
+            renderDashboard();
+        });
     }
 
     function isPastDate(dateStr) {
@@ -3332,6 +3860,12 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         appContent.style.display = 'none';
         loginScreen.style.display = 'flex';
 
+        const loginPassInput = document.getElementById('loginPass');
+        if (loginPassInput) {
+            loginPassInput.type = 'password';
+            loginPassInput.value = '';
+        }
+
         if (!appData.user) {
             setAuthMode('signup');
         } else {
@@ -3342,50 +3876,50 @@ for all to anon, authenticated using (true) with check (true);</textarea>
 
     document.getElementById('setupForm').addEventListener('submit', async (e) => {
         e.preventDefault();
-        showLoading('Creating account...');
         const name = document.getElementById('setupName').value.trim();
         const password = document.getElementById('setupPass').value;
         const pin = document.getElementById('setupPin').value.trim();
-        const salt = generateSalt();
-        const passHash = await hashSecret(password, salt);
-        const pinHash = pin ? await hashSecret(pin, salt) : '';
-
-        appData.user = { name, salt, passHash, pinHash };
-        saveData();
-        if (appData.supabase.url && appData.supabase.key) {
-            await syncToSupabase(true);
-        }
-        unlockApp();
+        runAfterLoading('Creating account...', async () => {
+            const salt = generateSalt();
+            const passHash = await hashSecret(password, salt);
+            const pinHash = pin ? await hashSecret(pin, salt) : '';
+            appData.user = { name, salt, passHash, pinHash };
+            saveData();
+            if (appData.supabase.url && appData.supabase.key) {
+                await syncToSupabase(true);
+            }
+        }, () => {
+            unlockApp();
+        });
     });
 
     document.getElementById('loginForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         if (!appData.user) {
-            hideLoading();
             setAuthMode('signup');
             showAlert('No account found. Please sign up first.', 'Notice');
             return;
         }
-        showLoading('Signing in...');
         const pass = document.getElementById('loginPass').value;
         const user = appData.user;
-
-        if (user.password !== undefined) {
-            const salt = generateSalt();
-            user.salt = salt;
-            user.passHash = await hashSecret(user.password, salt);
-            delete user.password;
-            saveData();
-        }
-
-        const enteredHash = await hashSecret(pass, user.salt || '');
-        if (enteredHash === user.passHash) {
-            document.getElementById('loginPass').value = '';
-            unlockApp();
-        } else {
-            hideLoading();
-            showAlert('Incorrect password. Please try again.', 'Error');
-        }
+        runAfterLoading('Signing in...', async () => {
+            if (user.password !== undefined) {
+                const salt = generateSalt();
+                user.salt = salt;
+                user.passHash = await hashSecret(user.password, salt);
+                delete user.password;
+                saveData();
+            }
+            const enteredHash = await hashSecret(pass, user.salt || '');
+            return enteredHash === user.passHash;
+        }, (ok) => {
+            if (ok) {
+                document.getElementById('loginPass').value = '';
+                unlockApp();
+            } else {
+                showAlert('Incorrect password. Please try again.', 'Error');
+            }
+        });
     });
 
     function openForgotPasswordModal() {
@@ -3415,35 +3949,40 @@ for all to anon, authenticated using (true) with check (true);</textarea>
             }
         }
 
-        const newSalt = generateSalt();
-        user.salt = newSalt;
-        user.passHash = await hashSecret(newPass, newSalt);
-        if (pinInput) {
-            user.pinHash = await hashSecret(pinInput, newSalt);
-        }
-        delete user.password;
-        appData.user = user;
-        saveData();
-        closeForgotPasswordModal();
-        showAlert('Password reset successfully! You can now log in with your new password.');
+        runAfterLoading('Resetting password...', async () => {
+            const newSalt = generateSalt();
+            user.salt = newSalt;
+            user.passHash = await hashSecret(newPass, newSalt);
+            if (pinInput) {
+                user.pinHash = await hashSecret(pinInput, newSalt);
+            }
+            delete user.password;
+            appData.user = user;
+            saveData();
+        }, () => {
+            closeForgotPasswordModal();
+            showAlert('Password reset successfully! You can now log in with your new password.');
+        });
     });
 
     function confirmDeleteAccount() {
         showConfirm('Are you sure you want to permanently delete your CashFlow account and local data?', () => {
-            showLoading('Deleting account...');
-            localStorage.removeItem(STORAGE_KEY);
-            appData = getDefaultData(null);
-            lockSupabaseSql();
-            updateHeaderStatusLight();
-            checkAuth();
-            showAlert('Your CashFlow account has been deleted.', 'Account Deleted');
+            runAfterLoading('Deleting account...', () => {
+                localStorage.removeItem(STORAGE_KEY);
+                appData = getDefaultData(null);
+                lockSupabaseSql();
+                updateHeaderStatusLight();
+                checkAuth();
+            }, () => {
+                showAlert('Your CashFlow account has been deleted.', 'Account Deleted');
+            });
         });
     }
 
     function unlockApp() {
         document.getElementById('loginScreen').style.display = 'none';
         document.getElementById('appContent').style.display = 'block';
-        document.getElementById('editUserName').value = appData.user.name;
+        document.getElementById('editUserName').value = appData.user ? appData.user.name : '';
         const monthInput = document.getElementById('dashMonthSelect');
         if (monthInput) {
             monthInput.max = getCurrentMonthISO();
@@ -3462,9 +4001,10 @@ for all to anon, authenticated using (true) with check (true);</textarea>
     function lockApp() {
         clearTimeout(idleTimer);
         lockSupabaseSql();
-        showLoading('Locking session...');
-        document.getElementById('appContent').style.display = 'none';
-        checkAuth();
+        runAfterLoading('Locking session...', () => {
+            document.getElementById('appContent').style.display = 'none';
+            checkAuth();
+        });
     }
 
     function renderActiveLoanView() {
@@ -3622,6 +4162,7 @@ for all to anon, authenticated using (true) with check (true);</textarea>
 
     function refreshAllUI() {
         populateDropdowns();
+        renderPrivacyToggleUI();
         renderDashboard();
         renderHistoryTab();
         renderIncomeExpenseTables();
@@ -3640,6 +4181,7 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         const balances = calculateAccountBalances();
         const prevLoanAcc = document.getElementById('loanAccount').value;
         const prevPartAcc = document.getElementById('partPayAccount').value;
+        const prevBillAcc = document.getElementById('billPayAccount').value;
         const prevHistAcc = document.getElementById('accountFullHistorySelect').value;
 
         document.getElementById('incCategory').innerHTML = appData.categories.income
@@ -3655,6 +4197,7 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         document.getElementById('expAccount').innerHTML = accWithBalanceOptions;
         document.getElementById('loanAccount').innerHTML = accWithBalanceOptions;
         document.getElementById('partPayAccount').innerHTML = accWithBalanceOptions;
+        document.getElementById('billPayAccount').innerHTML = accWithBalanceOptions;
         document.getElementById('trfFrom').innerHTML = accWithBalanceOptions;
         document.getElementById('trfTo').innerHTML = accWithBalanceOptions;
 
@@ -3666,6 +4209,9 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         }
         if (prevPartAcc && appData.accounts.some(a => a.id === prevPartAcc)) {
             document.getElementById('partPayAccount').value = prevPartAcc;
+        }
+        if (prevBillAcc && appData.accounts.some(a => a.id === prevBillAcc)) {
+            document.getElementById('billPayAccount').value = prevBillAcc;
         }
         if (prevHistAcc && appData.accounts.some(a => a.id === prevHistAcc)) {
             document.getElementById('accountFullHistorySelect').value = prevHistAcc;
@@ -3705,6 +4251,11 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         }).join('');
     }
 
+    function isLoanOverdue(ln) {
+        if (!ln || ln.settled || !ln.dueDate) return false;
+        return ln.dueDate < getTodayISO();
+    }
+
     function renderDashboard() {
         const balances = calculateAccountBalances();
 
@@ -3721,28 +4272,44 @@ for all to anon, authenticated using (true) with check (true);</textarea>
             ? monthInput.value
             : getCurrentMonthISO();
 
-        let totalIncome = 0;
-        let totalExpense = 0;
+        let selectedMonthIncome = 0;
         let selectedMonthExpense = 0;
 
         appData.transactions.forEach(tx => {
+            if (!tx.date || !tx.date.startsWith(selectedMonth)) return;
             const amt = parseFloat(tx.amount) || 0;
             if (tx.type === 'income') {
-                totalIncome += amt;
+                selectedMonthIncome += amt;
             }
             if (tx.type === 'expense') {
-                totalExpense += amt;
-                if (tx.date && tx.date.startsWith(selectedMonth)) {
-                    selectedMonthExpense += amt;
-                }
+                selectedMonthExpense += amt;
             }
         });
 
-        document.getElementById('dashIncome').textContent = `₹${totalIncome.toFixed(2)}`;
-        document.getElementById('dashExpense').textContent = `₹${totalExpense.toFixed(2)}`;
-        document.getElementById('dashBankBal').textContent = `₹${bankTotal.toFixed(2)}`;
-        document.getElementById('dashCashBal').textContent = `₹${cashTotal.toFixed(2)}`;
-        document.getElementById('dashTotalBal').textContent = `₹${(bankTotal + cashTotal).toFixed(2)}`;
+        const dict = TRANSLATIONS[appData.language === 'ta' ? 'ta' : 'en'];
+        const incLabelEl = document.getElementById('dashIncomeLabel');
+        const expLabelEl = document.getElementById('dashExpenseLabel');
+        if (incLabelEl) incLabelEl.textContent = dict.incomeLabel;
+        if (expLabelEl) expLabelEl.textContent = dict.expenseLabel;
+
+        document.getElementById('dashIncome').textContent = formatCurrency(selectedMonthIncome);
+        document.getElementById('dashExpense').textContent = formatCurrency(selectedMonthExpense);
+        document.getElementById('dashBankBal').textContent = formatCurrency(bankTotal);
+        document.getElementById('dashCashBal').textContent = formatCurrency(cashTotal);
+        document.getElementById('dashTotalBal').textContent = formatCurrency(bankTotal + cashTotal);
+
+        const overdueBox = document.getElementById('overdueLoanAlertBox');
+        const overdueLoans = (appData.loans || []).filter(isLoanOverdue);
+        if (overdueBox) {
+            if (overdueLoans.length > 0) {
+                overdueBox.style.display = 'block';
+                const listTxt = overdueLoans.map(l => `${escapeHTML(l.person)} (${escapeHTML(formatDate(l.dueDate))})`).join(', ');
+                document.getElementById('overdueLoanAlertText').textContent =
+                    `Loan Overdue Alert (${overdueLoans.length}): ${listTxt}`;
+            } else {
+                overdueBox.style.display = 'none';
+            }
+        }
 
         const budgetBox = document.getElementById('budgetAlertBox');
         const limit = parseFloat(appData.budget.monthlyLimit) || 0;
@@ -3832,11 +4399,13 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         };
 
         const finishSave = () => {
-            showLoading('Saving income...');
-            addTransactionEntry(entry);
-            document.getElementById('incAmount').value = '';
-            document.getElementById('incDesc').value = '';
-            showAlert('Income entry saved successfully!');
+            runAfterLoading('Saving income...', () => {
+                addTransactionEntry(entry);
+                document.getElementById('incAmount').value = '';
+                document.getElementById('incDesc').value = '';
+            }, () => {
+                showAlert('Income entry saved successfully!');
+            });
         };
 
         if (isDuplicateEntry(entry.date, entry.type, entry.amount, entry.desc)) {
@@ -3882,11 +4451,13 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         };
 
         const finishSave = () => {
-            showLoading('Saving expense...');
-            addTransactionEntry(entry);
-            document.getElementById('expAmount').value = '';
-            document.getElementById('expDesc').value = '';
-            showAlert('Expense entry saved successfully!');
+            runAfterLoading('Saving expense...', () => {
+                addTransactionEntry(entry);
+                document.getElementById('expAmount').value = '';
+                document.getElementById('expDesc').value = '';
+            }, () => {
+                showAlert('Expense entry saved successfully!');
+            });
         };
 
         if (isDuplicateEntry(entry.date, entry.type, entry.amount, entry.desc)) {
@@ -3982,19 +4553,51 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         }).join('');
     }
 
+    function renderLoanRepaymentLog() {
+        const logBody = document.getElementById('loanRepaymentLogBody');
+        if (!logBody) return;
+
+        const repaymentTx = appData.transactions
+            .filter(tx => tx.category === 'Loan Part Payment' || tx.category === 'Loan Settlement')
+            .sort((a, b) => Number(b.id) - Number(a.id));
+
+        if (repaymentTx.length === 0) {
+            logBody.innerHTML = '<tr><td colspan="6" style="text-align:center; color:var(--text-muted);">No loan repayments recorded yet.</td></tr>';
+            return;
+        }
+
+        logBody.innerHTML = repaymentTx.map(tx => {
+            const cleanNote = String(tx.desc || '');
+            const partyMatch = cleanNote.replace(/^Part payment:\s*/i, '').replace(/^Settled \(Principal \+ Interest\):\s*/i, '');
+            const isIncoming = tx.type === 'loan_taken';
+            return `
+                <tr>
+                    <td>${escapeHTML(formatDate(tx.date))}</td>
+                    <td><strong>${escapeHTML(partyMatch)}</strong></td>
+                    <td><span class="badge ${isIncoming ? 'badge-inc' : 'badge-exp'}">${escapeHTML(tx.category)}</span></td>
+                    <td>${escapeHTML(getAccountName(tx.accountId))}</td>
+                    <td>${escapeHTML(tx.desc)}</td>
+                    <td class="${isIncoming ? 'income-text' : 'expense-text'}">₹${parseFloat(tx.amount).toFixed(2)}</td>
+                </tr>
+            `;
+        }).join('');
+    }
+
     function renderLoanTabLists() {
         renderPartyLoanSummary();
+        renderLoanRepaymentLog();
 
         const billsList = document.getElementById('recurringBillsList');
         if (billsList) {
             billsList.innerHTML = (appData.recurringBills || []).map((b, i) => `
-                <div class="acc-box">
+                <div class="acc-box" style="flex-wrap:wrap;">
                     <div>
                         <div style="font-weight: 700;">${escapeHTML(b.title)}</div>
-                        <small style="color: var(--text-muted);">${b.frequency === 'daily' ? 'Daily' : 'Monthly (Day ' + parseInt(b.dueDay, 10) + ')'}</small>
+                        <small style="color: var(--text-muted);">${b.frequency === 'daily' ? 'Daily' : 'Monthly (Day ' + parseInt(b.dueDay, 10) + ')'} • ${escapeHTML(getAccountName(b.accountId || 'cash'))}</small>
                     </div>
-                    <div style="display:flex; align-items:center; gap:10px;">
+                    <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
                         <span class="expense-text">₹${parseFloat(b.amount).toFixed(2)}</span>
+                        <button type="button" class="btn btn-sm-ok" onclick="payBillNow(${i})">Pay Now</button>
                         <button type="button" class="btn btn-sm-del" onclick="deleteBill(${i})">Delete</button>
                     </div>
                 </div>
@@ -4010,6 +4613,11 @@ for all to anon, authenticated using (true) with check (true);</textarea>
                     ? Math.max(0, parseFloat(ln.totalDue) || 0)
                     : Math.max(0, principalVal + interestVal);
 
+                const overdue = isLoanOverdue(ln);
+                const dueText = ln.dueDate ? `<br><small style="color:${overdue ? 'var(--expense-color)' : 'var(--text-muted)'}; font-weight:700;">Due: ${escapeHTML(formatDate(ln.dueDate))}</small>` : '';
+                const statusBadgeClass = ln.settled ? 'badge-inc' : (overdue ? 'badge-exp' : 'badge-trf');
+                const statusLabel = ln.settled ? 'Settled' : (overdue ? 'Overdue' : 'Active');
+
                 return `
                     <tr>
                         <td><strong>${escapeHTML(ln.person)}</strong><br><small style="color:var(--text-muted);">${escapeHTML(ln.note || '')}</small></td>
@@ -4018,7 +4626,7 @@ for all to anon, authenticated using (true) with check (true);</textarea>
                         <td>₹${principalVal.toFixed(2)}</td>
                         <td>₹${interestVal.toFixed(2)}</td>
                         <td class="${ln.direction === 'given' ? 'expense-text' : 'income-text'}">₹${totalDue.toFixed(2)}</td>
-                        <td><span class="badge ${ln.settled ? 'badge-inc' : 'badge-trf'}">${ln.settled ? 'Settled' : 'Active'}</span></td>
+                        <td><span class="badge ${statusBadgeClass}">${statusLabel}</span>${dueText}</td>
                         <td>
                             ${!ln.settled ? `<button type="button" class="btn btn-sm-edit" onclick="openPartPayModal(${idx})">Part Pay</button>` : ''}
                             ${!ln.settled ? `<button type="button" class="btn btn-sm-ok" onclick="toggleLoanSettled(${idx})">Settle</button>` : ''}
@@ -4028,6 +4636,45 @@ for all to anon, authenticated using (true) with check (true);</textarea>
                 `;
             }).join('') || '<tr><td colspan="8" style="text-align:center; color:var(--text-muted);">No loan entries recorded yet.</td></tr>';
         }
+    }
+
+    function payBillNow(index) {
+        const bill = appData.recurringBills[index];
+        if (!bill) return;
+        const amt = parseFloat(bill.amount) || 0;
+        const accId = bill.accountId || (appData.accounts[0] && appData.accounts[0].id) || 'cash';
+        const balances = calculateAccountBalances();
+        const avail = parseFloat(balances[accId]) || 0;
+
+        if (amt <= 0) {
+            showAlert('Invalid bill amount.', 'Error');
+            return;
+        }
+        if (amt > avail) {
+            showAlert(
+                `Insufficient balance in ${getAccountName(accId)}! Available: ₹${avail.toFixed(2)}, Bill: ₹${amt.toFixed(2)}.`,
+                'Insufficient Balance'
+            );
+            return;
+        }
+
+        showConfirm(`Mark "${bill.title}" (₹${amt.toFixed(2)}) as paid from ${getAccountName(accId)}?`, () => {
+            runAfterLoading('Recording bill payment...', () => {
+                appData.transactions.push({
+                    id: Date.now(),
+                    date: getTodayISO(),
+                    type: 'expense',
+                    category: 'Rent & Utility Bills',
+                    accountId: accId,
+                    amount: amt,
+                    desc: `Bill Paid: ${bill.title}`
+                });
+                saveData();
+                refreshAllUI();
+            }, () => {
+                showAlert(`"${bill.title}" recorded as paid in Expenses!`);
+            });
+        });
     }
 
     function openPartPayModal(idx) {
@@ -4077,28 +4724,30 @@ for all to anon, authenticated using (true) with check (true);</textarea>
             }
         }
 
-        showLoading('Recording part payment...');
-        const txType = ln.direction === 'given' ? 'loan_taken' : 'loan_given';
-        appData.transactions.push({
-            id: Date.now(),
-            date: getTodayISO(),
-            type: txType,
-            category: 'Loan Part Payment',
-            accountId: accId,
-            amount: payAmt,
-            desc: `Part payment: ${ln.person}`
+        runAfterLoading('Recording part payment...', () => {
+            const txType = ln.direction === 'given' ? 'loan_taken' : 'loan_given';
+            appData.transactions.push({
+                id: Date.now(),
+                date: getTodayISO(),
+                type: txType,
+                category: 'Loan Part Payment',
+                accountId: accId,
+                amount: payAmt,
+                desc: `Part payment: ${ln.person}`
+            });
+
+            ln.totalDue = parseFloat((currentDue - payAmt).toFixed(2));
+            if (ln.totalDue <= 0) {
+                ln.totalDue = 0;
+                ln.settled = true;
+            }
+
+            saveData();
+            closePartPayModal();
+            refreshAllUI();
+        }, () => {
+            showAlert('Partial payment recorded and balance updated!');
         });
-
-        ln.totalDue = parseFloat((currentDue - payAmt).toFixed(2));
-        if (ln.totalDue <= 0) {
-            ln.totalDue = 0;
-            ln.settled = true;
-        }
-
-        saveData();
-        closePartPayModal();
-        refreshAllUI();
-        showAlert('Partial payment recorded and balance updated!');
     });
 
     function openEditModal(id) {
@@ -4148,15 +4797,17 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         }
         const idx = appData.transactions.findIndex(t => t.id === id);
         if (idx !== -1) {
-            showLoading('Updating transaction...');
-            appData.transactions[idx].date = newDate;
-            appData.transactions[idx].category = document.getElementById('editTxCategory').value;
-            appData.transactions[idx].amount = amount;
-            appData.transactions[idx].desc = document.getElementById('editTxDesc').value.trim();
-            saveData();
-            closeEditModal();
-            refreshAllUI();
-            showAlert('Transaction updated!');
+            runAfterLoading('Updating transaction...', () => {
+                appData.transactions[idx].date = newDate;
+                appData.transactions[idx].category = document.getElementById('editTxCategory').value;
+                appData.transactions[idx].amount = amount;
+                appData.transactions[idx].desc = document.getElementById('editTxDesc').value.trim();
+                saveData();
+                closeEditModal();
+                refreshAllUI();
+            }, () => {
+                showAlert('Transaction updated!');
+            });
         }
     });
 
@@ -4183,22 +4834,22 @@ for all to anon, authenticated using (true) with check (true);</textarea>
             return;
         }
         showConfirm('Are you sure you want to permanently delete this entry?', async () => {
-            showLoading('Deleting...');
-            appData.transactions = appData.transactions.filter(t => Number(t.id) !== Number(id));
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
-            if (appData.phoneFolderAutoSave && isAppUnlocked()) {
-                saveDataToPhoneFolderNow(true);
-            }
-            if (appData.supabase && appData.supabase.url && appData.supabase.key) {
-                try {
+            showLoading('Deleting...', 0);
+            let delErr = null;
+            try {
+                appData.transactions = appData.transactions.filter(t => Number(t.id) !== Number(id));
+                if (appData.supabase && appData.supabase.url && appData.supabase.key) {
                     await deleteTransactionFromSupabase(id);
-                    await syncToSupabase(true);
-                } catch (err) {
-                    hideLoading();
-                    showAlert(err.message, 'Cloud Delete Warning');
                 }
+                saveData();
+                refreshAllUI();
+            } catch (err) {
+                delErr = err.message;
             }
-            refreshAllUI();
+            setTimeout(() => {
+                hideLoading();
+                if (delErr) showAlert(delErr, 'Cloud Delete Warning');
+            }, DEFAULT_LOADING_MS);
         });
     }
 
@@ -4365,21 +5016,23 @@ for all to anon, authenticated using (true) with check (true);</textarea>
 
     document.getElementById('addBankForm').addEventListener('submit', (e) => {
         e.preventDefault();
-        showLoading('Adding account...');
         const name = document.getElementById('newBankName').value.trim();
         const opening = parseFloat(document.getElementById('newBankOpening').value) || 0;
-        appData.accounts.push({
-            id: 'bank_' + Date.now(),
-            name,
-            type: 'bank',
-            opening,
-            createdAt: getTodayISO()
+        runAfterLoading('Adding account...', () => {
+            appData.accounts.push({
+                id: 'bank_' + Date.now(),
+                name,
+                type: 'bank',
+                opening,
+                createdAt: getTodayISO()
+            });
+            saveData();
+            document.getElementById('newBankName').value = '';
+            document.getElementById('newBankOpening').value = '0';
+            refreshAllUI();
+        }, () => {
+            showAlert('New bank account added!');
         });
-        saveData();
-        document.getElementById('newBankName').value = '';
-        document.getElementById('newBankOpening').value = '0';
-        refreshAllUI();
-        showAlert('New bank account added!');
     });
 
     document.getElementById('transferForm').addEventListener('submit', (e) => {
@@ -4388,6 +5041,7 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         const toId = document.getElementById('trfTo').value;
         const dateVal = document.getElementById('trfDate').value;
         const amount = parseFloat(document.getElementById('trfAmount').value);
+        const descVal = document.getElementById('trfDesc').value.trim();
 
         if (isFutureDate(dateVal)) {
             showAlert('Future dates are not allowed.', 'Date Restriction');
@@ -4407,22 +5061,24 @@ for all to anon, authenticated using (true) with check (true);</textarea>
             showAlert(`Insufficient balance in ${getAccountName(fromId)} (Available: ₹${avail.toFixed(2)}).`, 'Insufficient Balance');
             return;
         }
-        showLoading('Saving transfer...');
-        appData.transactions.push({
-            id: Date.now(),
-            date: dateVal,
-            type: 'transfer',
-            category: 'Self Transfer',
-            accountId: fromId,
-            toAccountId: toId,
-            amount,
-            desc: document.getElementById('trfDesc').value.trim()
+        runAfterLoading('Saving transfer...', () => {
+            appData.transactions.push({
+                id: Date.now(),
+                date: dateVal,
+                type: 'transfer',
+                category: 'Self Transfer',
+                accountId: fromId,
+                toAccountId: toId,
+                amount,
+                desc: descVal
+            });
+            saveData();
+            document.getElementById('trfAmount').value = '';
+            document.getElementById('trfDesc').value = '';
+            refreshAllUI();
+        }, () => {
+            showAlert('Self transfer recorded successfully!');
         });
-        saveData();
-        document.getElementById('trfAmount').value = '';
-        document.getElementById('trfDesc').value = '';
-        refreshAllUI();
-        showAlert('Self transfer recorded successfully!');
     });
 
     function togglePastDateLock() {
@@ -4482,12 +5138,16 @@ for all to anon, authenticated using (true) with check (true);</textarea>
 
     document.getElementById('budgetForm').addEventListener('submit', (e) => {
         e.preventDefault();
-        showLoading('Saving budget...');
-        appData.budget.monthlyLimit = parseFloat(document.getElementById('monthlyBudgetInput').value) || 0;
-        appData.budget.alertPercent = parseInt(document.getElementById('budgetAlertPercentInput').value, 10) || 80;
-        saveData();
-        refreshAllUI();
-        showAlert('Monthly budget settings saved!');
+        const limitVal = parseFloat(document.getElementById('monthlyBudgetInput').value) || 0;
+        const alertVal = parseInt(document.getElementById('budgetAlertPercentInput').value, 10) || 80;
+        runAfterLoading('Saving budget...', () => {
+            appData.budget.monthlyLimit = limitVal;
+            appData.budget.alertPercent = alertVal;
+            saveData();
+            refreshAllUI();
+        }, () => {
+            showAlert('Monthly budget settings saved!');
+        });
     });
 
     function deleteCategory(type, index) {
@@ -4505,11 +5165,13 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         const val = parseFloat(inputEl.value) || 0;
         const acc = appData.accounts.find(a => a.id === accId);
         if (acc) {
-            showLoading('Updating balance...');
-            acc.opening = val;
-            saveData();
-            refreshAllUI();
-            showAlert('Opening balance updated!');
+            runAfterLoading('Updating balance...', () => {
+                acc.opening = val;
+                saveData();
+                refreshAllUI();
+            }, () => {
+                showAlert('Opening balance updated!');
+            });
         }
     }
 
@@ -4523,18 +5185,20 @@ for all to anon, authenticated using (true) with check (true);</textarea>
 
     document.getElementById('recurringBillForm').addEventListener('submit', (e) => {
         e.preventDefault();
-        showLoading('Adding bill...');
-        appData.recurringBills.push({
-            title: document.getElementById('billTitle').value.trim(),
-            amount: parseFloat(document.getElementById('billAmount').value) || 0,
-            frequency: document.getElementById('billFrequency').value,
-            dueDay: parseInt(document.getElementById('billDueDay').value, 10) || 1
+        const title = document.getElementById('billTitle').value.trim();
+        const amount = parseFloat(document.getElementById('billAmount').value) || 0;
+        const frequency = document.getElementById('billFrequency').value;
+        const dueDay = parseInt(document.getElementById('billDueDay').value, 10) || 1;
+        const accountId = document.getElementById('billPayAccount').value;
+        runAfterLoading('Adding bill...', () => {
+            appData.recurringBills.push({ title, amount, frequency, dueDay, accountId });
+            saveData();
+            document.getElementById('billTitle').value = '';
+            document.getElementById('billAmount').value = '';
+            refreshAllUI();
+        }, () => {
+            showAlert('Bill added!');
         });
-        saveData();
-        document.getElementById('billTitle').value = '';
-        document.getElementById('billAmount').value = '';
-        refreshAllUI();
-        showAlert('Bill added!');
     });
 
     function deleteBill(index) {
@@ -4553,6 +5217,7 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         const principal = parseFloat(document.getElementById('loanPrincipal').value) || 0;
         const interestAmt = parseFloat(document.getElementById('loanInterestAmt').value) || 0;
         const totalDue = parseFloat((principal + interestAmt).toFixed(2));
+        const dueDate = document.getElementById('loanDueDate').value || '';
         const note = document.getElementById('loanNote').value.trim();
 
         if (principal <= 0) {
@@ -4572,44 +5237,48 @@ for all to anon, authenticated using (true) with check (true);</textarea>
             }
         }
 
-        showLoading('Saving loan...');
-        const txId = Date.now();
-        const txType = direction === 'given' ? 'loan_given' : 'loan_taken';
-        const txLabel = direction === 'given' ? 'Loan Given' : 'Loan Taken';
+        runAfterLoading('Saving loan...', () => {
+            const txId = Date.now();
+            const txType = direction === 'given' ? 'loan_given' : 'loan_taken';
+            const txLabel = direction === 'given' ? 'Loan Given' : 'Loan Taken';
 
-        appData.transactions.push({
-            id: txId,
-            date: getTodayISO(),
-            type: txType,
-            category: txLabel,
-            accountId,
-            amount: principal,
-            desc: note
-                ? `${person} — ${note} (Total Payable: ₹${totalDue.toFixed(2)})`
-                : `${person} (${txLabel} • Total Payable: ₹${totalDue.toFixed(2)})`
+            appData.transactions.push({
+                id: txId,
+                date: getTodayISO(),
+                type: txType,
+                category: txLabel,
+                accountId,
+                amount: principal,
+                desc: note
+                    ? `${person} — ${note} (Total Payable: ₹${totalDue.toFixed(2)})`
+                    : `${person} (${txLabel} • Total Payable: ₹${totalDue.toFixed(2)})`
+            });
+
+            appData.loans.push({
+                person,
+                direction,
+                accountId,
+                principal,
+                interestAmt,
+                totalDue,
+                dueDate,
+                note,
+                txId,
+                settled: false
+            });
+
+            saveData();
+            document.getElementById('loanPerson').value = '';
+            document.getElementById('loanPrincipal').value = '';
+            document.getElementById('loanInterestAmt').value = '0';
+            document.getElementById('loanDueDate').value = '';
+            document.getElementById('loanNote').value = '';
+            refreshAllUI();
+        }, () => {
+            showAlert(direction === 'given'
+                ? `Principal ₹${principal.toFixed(2)} deducted from ${getAccountName(accountId)}. Total Receivable: ₹${totalDue.toFixed(2)}!`
+                : `Principal ₹${principal.toFixed(2)} added to ${getAccountName(accountId)}. Total Payable: ₹${totalDue.toFixed(2)}!`);
         });
-
-        appData.loans.push({
-            person,
-            direction,
-            accountId,
-            principal,
-            interestAmt,
-            totalDue,
-            note,
-            txId,
-            settled: false
-        });
-
-        saveData();
-        document.getElementById('loanPerson').value = '';
-        document.getElementById('loanPrincipal').value = '';
-        document.getElementById('loanInterestAmt').value = '0';
-        document.getElementById('loanNote').value = '';
-        refreshAllUI();
-        showAlert(direction === 'given'
-            ? `Principal ₹${principal.toFixed(2)} deducted from ${getAccountName(accountId)}. Total Receivable: ₹${totalDue.toFixed(2)}!`
-            : `Principal ₹${principal.toFixed(2)} added to ${getAccountName(accountId)}. Total Payable: ₹${totalDue.toFixed(2)}!`);
     });
 
     function toggleLoanSettled(index) {
@@ -4633,45 +5302,53 @@ for all to anon, authenticated using (true) with check (true);</textarea>
             : `Mark loan from ${ln.person} as Settled and deduct total ₹${rem.toFixed(2)} (Principal + Interest) from ${getAccountName(ln.accountId)}?`;
 
         showConfirm(msg, () => {
-            showLoading('Settling loan...');
-            ln.settled = true;
-            ln.totalDue = 0;
-            if (rem > 0) {
-                const settleTxType = ln.direction === 'given' ? 'loan_taken' : 'loan_given';
-                appData.transactions.push({
-                    id: Date.now(),
-                    date: getTodayISO(),
-                    type: settleTxType,
-                    category: 'Loan Settlement',
-                    accountId: ln.accountId,
-                    amount: rem,
-                    desc: `Settled (Principal + Interest): ${ln.person}`
-                });
-            }
-            saveData();
-            refreshAllUI();
+            runAfterLoading('Settling loan...', () => {
+                ln.settled = true;
+                ln.totalDue = 0;
+                if (rem > 0) {
+                    const settleTxType = ln.direction === 'given' ? 'loan_taken' : 'loan_given';
+                    appData.transactions.push({
+                        id: Date.now(),
+                        date: getTodayISO(),
+                        type: settleTxType,
+                        category: 'Loan Settlement',
+                        accountId: ln.accountId,
+                        amount: rem,
+                        desc: `Settled (Principal + Interest): ${ln.person}`
+                    });
+                }
+                saveData();
+                refreshAllUI();
+            }, () => {
+                showAlert('Loan settled successfully!');
+            });
         });
     }
 
     function deleteLoan(index) {
         const ln = appData.loans[index];
         showConfirm('Delete this loan record?', async () => {
-            showLoading('Deleting loan...');
-            const linkedTxId = ln && ln.txId;
-            if (linkedTxId) {
-                appData.transactions = appData.transactions.filter(t => Number(t.id) !== Number(linkedTxId));
-            }
-            appData.loans.splice(index, 1);
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
-            if (linkedTxId && appData.supabase && appData.supabase.url && appData.supabase.key) {
-                try {
-                    await deleteTransactionFromSupabase(linkedTxId);
-                } catch (err) {
-                    // ignore if not in table
+            showLoading('Deleting loan...', 0);
+            try {
+                const linkedTxId = ln && ln.txId;
+                if (linkedTxId) {
+                    appData.transactions = appData.transactions.filter(t => Number(t.id) !== Number(linkedTxId));
                 }
+                appData.loans.splice(index, 1);
+                if (linkedTxId && appData.supabase && appData.supabase.url && appData.supabase.key) {
+                    try {
+                        await deleteTransactionFromSupabase(linkedTxId);
+                    } catch (err) {
+                        // ignore if not in table
+                    }
+                }
+                saveData();
+                refreshAllUI();
+            } finally {
+                setTimeout(() => {
+                    hideLoading();
+                }, DEFAULT_LOADING_MS);
             }
-            saveData();
-            refreshAllUI();
         });
     }
 
@@ -4682,13 +5359,14 @@ for all to anon, authenticated using (true) with check (true);</textarea>
             showAlert('Please select a valid image file (PNG/JPG).', 'Invalid File');
             return;
         }
-        showLoading('Uploading logo...');
         const reader = new FileReader();
         reader.onload = function(e) {
-            appData.branding.logoDataUrl = e.target.result;
-            saveData();
-            hideLoading();
-            showAlert('Custom logo uploaded for PDF reports!');
+            runAfterLoading('Uploading logo...', () => {
+                appData.branding.logoDataUrl = e.target.result;
+                saveData();
+            }, () => {
+                showAlert('Custom logo uploaded for PDF reports!');
+            });
         };
         reader.readAsDataURL(file);
     }
@@ -4701,11 +5379,15 @@ for all to anon, authenticated using (true) with check (true);</textarea>
 
     document.getElementById('brandingForm').addEventListener('submit', (e) => {
         e.preventDefault();
-        showLoading('Saving branding...');
-        appData.branding.name = document.getElementById('brandNameInput').value.trim() || 'CashFlow Statement';
-        appData.branding.address = document.getElementById('brandAddressInput').value.trim();
-        saveData();
-        showAlert('PDF branding details saved!');
+        const bName = document.getElementById('brandNameInput').value.trim() || 'CashFlow Statement';
+        const bAddr = document.getElementById('brandAddressInput').value.trim();
+        runAfterLoading('Saving branding...', () => {
+            appData.branding.name = bName;
+            appData.branding.address = bAddr;
+            saveData();
+        }, () => {
+            showAlert('PDF branding details saved!');
+        });
     });
 
     document.getElementById('supabaseConfigForm').addEventListener('submit', async (e) => {
@@ -4802,14 +5484,22 @@ for all to anon, authenticated using (true) with check (true);</textarea>
                 await sbUpsert(url, key, 'cashflow_transactions', txRows);
             }
 
-            if (!silent) hideLoading();
             updateHeaderStatusLight();
             if (statusEl) statusEl.textContent = `Account & ${appData.transactions.length} transactions synced: ${new Date().toLocaleTimeString()}`;
-            if (!silent) showAlert('Account profile & full transaction history synced to Supabase!');
+            if (!silent) {
+                setTimeout(() => {
+                    hideLoading();
+                    showAlert('Account profile & full transaction history synced to Supabase!');
+                }, DEFAULT_LOADING_MS);
+            }
         } catch (err) {
-            if (!silent) hideLoading();
             if (statusEl) statusEl.textContent = `Sync failed: ${err.message}`;
-            if (!silent) showAlert(`Cloud sync failed: ${err.message}`, 'Error');
+            if (!silent) {
+                setTimeout(() => {
+                    hideLoading();
+                    showAlert(`Cloud sync failed: ${err.message}`, 'Error');
+                }, DEFAULT_LOADING_MS);
+            }
         }
     }
 
@@ -4822,6 +5512,8 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         }
         showLoading('Recovering from Supabase...', 0);
         if (statusEl) statusEl.textContent = 'Recovering account & history from Supabase...';
+        let resultMsg = '';
+        let resultTitle = 'Notice';
         try {
             const headers = { 'apikey': key, 'Authorization': `Bearer ${key}` };
             const res = await fetch(`${url}/rest/v1/${encodeURIComponent(table || 'cashflow_state')}?id=eq.default_user_state&select=payload`, { headers });
@@ -4897,40 +5589,48 @@ for all to anon, authenticated using (true) with check (true);</textarea>
                 document.getElementById('editUserName').value = appData.user.name;
                 document.getElementById('welcomeUserTitle').textContent = `Welcome, ${appData.user.name}`;
             }
-            hideLoading();
             if (statusEl) statusEl.textContent = `Recovered ${appData.transactions.length} transactions: ${new Date().toLocaleTimeString()}`;
-            showAlert('Account & full transaction history recovered from Supabase!');
+            resultMsg = 'Account & full transaction history recovered from Supabase!';
         } catch (err) {
-            hideLoading();
             if (statusEl) statusEl.textContent = `Recovery failed: ${err.message}`;
-            showAlert(`Cloud recovery failed: ${err.message}`, 'Error');
+            resultMsg = `Cloud recovery failed: ${err.message}`;
+            resultTitle = 'Error';
         }
+        setTimeout(() => {
+            hideLoading();
+            showAlert(resultMsg, resultTitle);
+        }, DEFAULT_LOADING_MS);
     }
 
     document.getElementById('profileUpdateForm').addEventListener('submit', async (e) => {
         e.preventDefault();
-        showLoading('Updating profile...');
+        if (!appData.user) {
+            showAlert('No account found. Please sign up first.', 'Notice');
+            return;
+        }
         const newName = document.getElementById('editUserName').value.trim();
         const newPass = document.getElementById('editUserPass').value;
         const newPin = document.getElementById('editUserPin').value.trim();
 
-        appData.user.name = newName;
-        const activeSalt = appData.user.salt || generateSalt();
-        appData.user.salt = activeSalt;
+        runAfterLoading('Updating profile...', async () => {
+            appData.user.name = newName;
+            const activeSalt = appData.user.salt || generateSalt();
+            appData.user.salt = activeSalt;
 
-        if (newPass) {
-            appData.user.passHash = await hashSecret(newPass, activeSalt);
-            delete appData.user.password;
-        }
-        if (newPin) {
-            appData.user.pinHash = await hashSecret(newPin, activeSalt);
-        }
+            if (newPass) {
+                appData.user.passHash = await hashSecret(newPass, activeSalt);
+                delete appData.user.password;
+            }
+            if (newPin) {
+                appData.user.pinHash = await hashSecret(newPin, activeSalt);
+            }
 
-        saveData();
-        document.getElementById('editUserPass').value = '';
-        document.getElementById('editUserPin').value = '';
-        hideLoading();
-        showAlert('Profile settings updated!');
+            saveData();
+            document.getElementById('editUserPass').value = '';
+            document.getElementById('editUserPin').value = '';
+        }, () => {
+            showAlert('Profile settings updated!');
+        });
     });
 
     document.getElementById('addCategoryForm').addEventListener('submit', (e) => {
@@ -4939,12 +5639,14 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         const name = document.getElementById('newCatName').value.trim();
         if (!name) return;
         if (!appData.categories[type].includes(name)) {
-            showLoading('Adding category...');
-            appData.categories[type].push(name);
-            saveData();
-            refreshAllUI();
-            document.getElementById('newCatName').value = '';
-            showAlert('New category added!');
+            runAfterLoading('Adding category...', () => {
+                appData.categories[type].push(name);
+                saveData();
+                refreshAllUI();
+                document.getElementById('newCatName').value = '';
+            }, () => {
+                showAlert('New category added!');
+            });
         } else {
             showAlert('This category already exists.', 'Notice');
         }
@@ -4952,31 +5654,35 @@ for all to anon, authenticated using (true) with check (true);</textarea>
 
     function confirmResetAll() {
         showConfirm('This will erase all transactions, custom banks, loans, bills, and categories while keeping your login account. Continue?', () => {
-            showLoading('Resetting data...');
-            appData = getDefaultData(appData.user);
-            saveData();
-            refreshAllUI();
-            showAlert('All financial data has been reset.');
+            runAfterLoading('Resetting data...', () => {
+                appData = getDefaultData(appData.user);
+                saveData();
+                refreshAllUI();
+            }, () => {
+                showAlert('All financial data has been reset.');
+            });
         });
     }
 
     function downloadBackup() {
-        showLoading('Preparing backup...');
-        const blob = new Blob([JSON.stringify(appData, null, 2)], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `CashFlow_Backup_${getTodayISO()}.json`;
-        a.click();
-        setTimeout(() => URL.revokeObjectURL(url), 1000);
+        runAfterLoading('Preparing backup...', () => {
+            const blob = new Blob([JSON.stringify(appData, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `CashFlow_Backup_${getTodayISO()}.json`;
+            a.click();
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+        });
     }
 
     function restoreBackup(event) {
         const file = event.target.files[0];
         if (!file) return;
-        showLoading('Restoring backup...');
         const reader = new FileReader();
         reader.onload = function(e) {
+            let ok = false;
+            let errMsg = 'Error reading backup file.';
             try {
                 const parsed = JSON.parse(e.target.result);
                 if (parsed && typeof parsed === 'object' && Array.isArray(parsed.transactions)) {
@@ -4987,21 +5693,23 @@ for all to anon, authenticated using (true) with check (true);</textarea>
                     if (!Array.isArray(appData.accounts) || appData.accounts.length === 0) appData.accounts = defaults.accounts;
                     saveData();
                     refreshAllUI();
-                    hideLoading();
-                    showAlert('Backup restored successfully!');
+                    ok = true;
                 } else {
-                    hideLoading();
-                    showAlert('Invalid backup file.', 'Error');
+                    errMsg = 'Invalid backup file.';
                 }
             } catch (err) {
-                hideLoading();
-                showAlert('Error reading backup file.', 'Error');
+                errMsg = 'Error reading backup file.';
             }
             event.target.value = '';
+            runAfterLoading('Restoring backup...', null, () => {
+                if (ok) showAlert('Backup restored successfully!');
+                else showAlert(errMsg, 'Error');
+            });
         };
         reader.readAsText(file);
     }
 
+    updateLiveClock();
     updateHeaderStatusLight();
     checkAuth();
 </script>
