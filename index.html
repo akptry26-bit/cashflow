@@ -84,6 +84,169 @@
         .income-text { color: var(--income-color) !important; font-weight: 700; }
         .expense-text { color: var(--expense-color) !important; font-weight: 700; }
 
+        /* Split Payment Mode Switch & Box */
+        .split-mode-toggle {
+            display: inline-flex;
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 3px;
+            gap: 3px;
+        }
+
+        .split-mode-btn {
+            border: none;
+            background: transparent;
+            padding: 6px 11px;
+            border-radius: 7px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .split-mode-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        .split-payment-box {
+            grid-column: span 2;
+            background: var(--bg-subtle);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 14px;
+            display: none;
+        }
+
+        .split-payment-box.active {
+            display: block;
+        }
+
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+        }
+
+        .split-summary-note {
+            margin-top: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-muted);
+        }
+
+        /* HD / 4K Crisp Light CashFlow Logo + Text Animation (No Black) */
+        .cf-hd-svg {
+            shape-rendering: geometricPrecision;
+            text-rendering: geometricPrecision;
+            filter: drop-shadow(0 2px 6px rgba(16, 185, 129, 0.22));
+        }
+
+        .login-cf-showcase {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 11px;
+            padding: 11px 18px;
+            margin: 0 auto 6px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 55%, #eff6ff 100%);
+            border: 1.5px solid rgba(34, 197, 94, 0.35);
+            box-shadow: 0 12px 28px rgba(29, 78, 216, 0.14), 0 0 20px rgba(34, 197, 94, 0.16);
+            overflow: hidden;
+        }
+
+        .login-cf-swirl {
+            position: absolute;
+            inset: -5px;
+            border-radius: 22px;
+            background: conic-gradient(
+                from 0deg,
+                transparent 0deg,
+                rgba(22, 163, 74, 0.65) 65deg,
+                rgba(29, 78, 216, 0.55) 130deg,
+                transparent 190deg,
+                rgba(16, 185, 129, 0.55) 260deg,
+                transparent 360deg
+            );
+            -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2px));
+            mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2px));
+            animation: cfLogoSwirl 3.6s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes cfLogoSwirl {
+            to { transform: rotate(360deg); }
+        }
+
+        .login-cf-ring-c {
+            transform-box: fill-box;
+            transform-origin: center;
+            stroke-dasharray: 140;
+            stroke-dashoffset: 140;
+            animation: cfDrawStroke 1.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .login-cf-bars {
+            transform-box: fill-box;
+            transform-origin: bottom center;
+            animation: cfBarsRise 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .login-cf-arrow {
+            transform-box: fill-box;
+            transform-origin: bottom left;
+            opacity: 0;
+            animation: cfArrowSweep 1.5s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards, cfArrowFloat 2.6s ease-in-out 1.9s infinite;
+        }
+
+        .login-cf-wordmark {
+            position: relative;
+            z-index: 1;
+            font-size: 1.65rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            background: linear-gradient(95deg, #1e3a8a 0%, #15803d 45%, #059669 78%, #2563eb 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            opacity: 0;
+            transform: translateX(10px) scale(0.95);
+            filter: blur(3px);
+            animation: cfTextReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.25s forwards, cfTextShine 3.2s linear 1.5s infinite;
+        }
+
+        @keyframes cfDrawStroke {
+            to { stroke-dashoffset: 0; }
+        }
+
+        @keyframes cfBarsRise {
+            0% { transform: scaleY(0.15); opacity: 0.25; }
+            100% { transform: scaleY(1); opacity: 1; }
+        }
+
+        @keyframes cfArrowSweep {
+            0% { opacity: 0; transform: translate(-6px, 6px) scale(0.75); }
+            100% { opacity: 1; transform: translate(0, 0) scale(1); }
+        }
+
+        @keyframes cfArrowFloat {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(1.5px, -2px); }
+        }
+
+        @keyframes cfTextReveal {
+            0% { opacity: 0; transform: translateX(10px) scale(0.95); filter: blur(3px); }
+            100% { opacity: 1; transform: translateX(0) scale(1); filter: blur(0); }
+        }
+
+        @keyframes cfTextShine {
+            to { background-position: 200% center; }
+        }
+
         /* Amount + Calculator Row */
         .amount-calc-row {
             display: flex;
@@ -214,59 +377,11 @@
             background: rgba(29, 78, 216, 0.08);
         }
 
-        /* Bank + Hand + Flowing Indian Rupee (₹) Logo Animation */
-        .cf-bank-roof {
-            transform-box: fill-box;
-            transform-origin: center;
-            animation: cfBuildingFloat 2.4s ease-in-out infinite;
-        }
-
-        .cf-hand-base {
-            transform-box: fill-box;
-            transform-origin: center;
-            animation: cfHandPulse 2.4s ease-in-out infinite;
-        }
-
-        .cf-rupee-flow {
-            transform-box: fill-box;
-            transform-origin: center;
-            animation: cfRupeeFlow 2.2s ease-in-out infinite;
-        }
-
-        @keyframes cfBuildingFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-2.5px); }
-        }
-
-        @keyframes cfHandPulse {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(1.2px); }
-        }
-
-        @keyframes cfRupeeFlow {
-            0% {
-                opacity: 0;
-                transform: translate(5px, -7px) scale(0.75);
-            }
-            25% {
-                opacity: 1;
-                transform: translate(2px, -3px) scale(1);
-            }
-            75% {
-                opacity: 1;
-                transform: translate(-2px, 3px) scale(1);
-            }
-            100% {
-                opacity: 0;
-                transform: translate(-5px, 7px) scale(0.75);
-            }
-        }
-
-        /* Ultra Modern Loading Animation Overlay (2s) */
+        /* Ultra Modern Loading Animation Overlay (2s, Light Glass + 4K Vector) */
         .loading-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(9, 13, 22, 0.52);
+            background: rgba(226, 232, 240, 0.62);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             display: none;
@@ -276,11 +391,11 @@
         }
 
         .loading-card {
-            background: rgba(255, 255, 255, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid rgba(255, 255, 255, 0.9);
             border-radius: 24px;
             padding: 24px 30px;
-            box-shadow: 0 24px 60px rgba(2, 6, 23, 0.35), 0 0 0 1px rgba(29, 78, 216, 0.08);
+            box-shadow: 0 24px 60px rgba(29, 78, 216, 0.18), 0 0 0 1px rgba(22, 163, 74, 0.14);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -307,7 +422,7 @@
             position: absolute;
             inset: 0;
             border-radius: 50%;
-            background: conic-gradient(from 0deg, #1d4ed8, #14b8a6, #22c55e, rgba(29, 78, 216, 0.08));
+            background: conic-gradient(from 0deg, #1d4ed8, #10b981, #22c55e, rgba(29, 78, 216, 0.1));
             -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3.5px), #000 calc(100% - 3px));
             mask: radial-gradient(farthest-side, transparent calc(100% - 3.5px), #000 calc(100% - 3px));
             animation: cfSpinHalo 1s linear infinite;
@@ -321,8 +436,9 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background: #ffffff;
-            box-shadow: 0 6px 18px rgba(15, 23, 42, 0.12);
+            background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+            border: 1px solid #dcfce7;
+            box-shadow: 0 6px 18px rgba(22, 163, 74, 0.14);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -353,7 +469,7 @@
             width: 45%;
             height: 100%;
             border-radius: 999px;
-            background: linear-gradient(90deg, #1d4ed8, #14b8a6);
+            background: linear-gradient(90deg, #1d4ed8, #16a34a);
             animation: cfSlideBar 2s ease-in-out infinite;
         }
 
@@ -362,11 +478,11 @@
             100% { left: 100%; }
         }
 
-        /* Premium Animated Login / Sign Up Screen + Green Income / Red Expense Flow Background */
+        /* Login Screen (Clean Blue/Emerald/White Gradient, No Black) */
         .login-wrapper {
             position: fixed;
             inset: 0;
-            background: linear-gradient(135deg, #090d16 0%, #172554 50%, #0f172a 100%);
+            background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #047857 100%);
             background-size: 200% 200%;
             animation: cfBgShift 10s ease infinite;
             display: flex;
@@ -383,84 +499,17 @@
             100% { background-position: 0% 50%; }
         }
 
-        .login-flow-bg {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 0;
-        }
-
-        .flow-amt {
-            position: absolute;
-            bottom: -48px;
-            padding: 6px 12px;
-            border-radius: 999px;
-            font-size: 0.85rem;
-            font-weight: 800;
-            letter-spacing: 0.02em;
-            opacity: 0;
-            animation: cfAmtFloatUp 8s linear infinite;
-            user-select: none;
-        }
-
-        .flow-amt.inc-flow {
-            color: #4ade80;
-            background: rgba(21, 128, 61, 0.22);
-            border: 1px solid rgba(74, 222, 128, 0.45);
-            box-shadow: 0 6px 18px rgba(21, 128, 61, 0.25);
-        }
-
-        .flow-amt.exp-flow {
-            color: #f87171;
-            background: rgba(185, 28, 28, 0.22);
-            border: 1px solid rgba(248, 113, 113, 0.45);
-            box-shadow: 0 6px 18px rgba(185, 28, 28, 0.25);
-        }
-
-        .flow-amt:nth-child(1) { left: 7%; animation-duration: 7.5s; animation-delay: 0s; }
-        .flow-amt:nth-child(2) { left: 19%; animation-duration: 8.8s; animation-delay: 1.4s; }
-        .flow-amt:nth-child(3) { left: 32%; animation-duration: 7.2s; animation-delay: 2.8s; }
-        .flow-amt:nth-child(4) { left: 46%; animation-duration: 9.2s; animation-delay: 0.9s; }
-        .flow-amt:nth-child(5) { left: 60%; animation-duration: 7.8s; animation-delay: 2.2s; }
-        .flow-amt:nth-child(6) { left: 74%; animation-duration: 8.5s; animation-delay: 3.6s; }
-        .flow-amt:nth-child(7) { left: 86%; animation-duration: 7.6s; animation-delay: 1.8s; }
-        .flow-amt:nth-child(8) { left: 13%; animation-duration: 9.5s; animation-delay: 4.5s; }
-        .flow-amt:nth-child(9) { left: 53%; animation-duration: 8.2s; animation-delay: 5.1s; }
-        .flow-amt:nth-child(10) { left: 80%; animation-duration: 9s; animation-delay: 4.2s; }
-
-        @keyframes cfAmtFloatUp {
-            0% {
-                transform: translateY(0) translateX(0) scale(0.92);
-                opacity: 0;
-            }
-            12% {
-                opacity: 0.92;
-            }
-            50% {
-                transform: translateY(-52vh) translateX(14px) scale(1);
-                opacity: 0.85;
-            }
-            88% {
-                opacity: 0.75;
-            }
-            100% {
-                transform: translateY(-108vh) translateX(-10px) scale(0.96);
-                opacity: 0;
-            }
-        }
-
         .login-box {
             position: relative;
             z-index: 1;
-            background: rgba(255, 255, 255, 0.97);
+            background: rgba(255, 255, 255, 0.98);
             padding: 32px 28px;
             border-radius: 22px;
             width: 100%;
             max-width: 425px;
-            box-shadow: 0 24px 60px rgba(2, 6, 23, 0.55);
+            box-shadow: 0 24px 60px rgba(30, 58, 138, 0.35);
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.8);
             animation: cfCardPop 0.45s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -502,21 +551,6 @@
             background: var(--primary);
             color: #ffffff;
             box-shadow: 0 4px 12px rgba(29, 78, 216, 0.28);
-        }
-
-        .login-logo-row {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 6px;
-        }
-
-        .login-brand-text {
-            font-size: 1.65rem;
-            font-weight: 800;
-            color: var(--text-main);
-            letter-spacing: -0.02em;
         }
 
         .brand-slogan {
@@ -586,16 +620,16 @@
         }
 
         .brand-logo-wrap {
-            width: 48px;
-            height: 48px;
-            border-radius: 13px;
-            background: #ffffff;
-            border: 1px solid var(--border-light);
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+            border: 1.5px solid rgba(34, 197, 94, 0.35);
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
+            box-shadow: 0 4px 12px rgba(22, 163, 74, 0.14);
         }
 
         .brand-info {
@@ -1654,6 +1688,10 @@
         }
 
         @media (max-width: 640px) {
+            .split-grid {
+                grid-template-columns: 1fr;
+            }
+
             .dashboard-cards-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 10px;
@@ -1755,28 +1793,19 @@
 </head>
 <body>
 
-<!-- Ultra Modern Loading Animation Overlay (2s) -->
+<!-- Ultra Modern HD Loading Animation Overlay (2s, No Black) -->
 <div class="loading-overlay" id="loadingOverlay" aria-live="polite">
     <div class="loading-card">
         <div class="modern-halo-wrap">
             <div class="modern-halo-ring"></div>
             <div class="loading-logo-box">
-                <svg width="34" height="34" viewBox="0 0 64 64" fill="none">
-                    <g class="cf-bank-roof">
-                        <polygon points="30,6 12,15 48,15" fill="#2dd4bf"></polygon>
-                        <rect x="14" y="15" width="32" height="3.5" fill="#14b8a6"></rect>
-                        <rect x="16" y="18.5" width="3.8" height="12.5" rx="1" fill="#2dd4bf"></rect>
-                        <rect x="23.5" y="18.5" width="3.8" height="12.5" rx="1" fill="#2dd4bf"></rect>
-                        <rect x="31" y="18.5" width="3.8" height="12.5" rx="1" fill="#2dd4bf"></rect>
-                        <rect x="38.5" y="18.5" width="3.8" height="12.5" rx="1" fill="#2dd4bf"></rect>
-                        <rect x="12" y="31" width="36" height="3.5" rx="1" fill="#14b8a6"></rect>
-                    </g>
-                    <g class="cf-rupee-flow">
-                        <text x="45" y="29" fill="#15803d" font-size="16" font-weight="900">₹</text>
-                    </g>
-                    <g class="cf-hand-base">
-                        <path d="M9 47C12 44 17 43 22 45L35 49C38 50 41 48 44 45L52 39C54 38 56.5 40 55 42.5L46 52C43 55 38 56 33 55L17 52L9 54Z" fill="#ffffff" stroke="#0f172a" stroke-width="3.6" stroke-linejoin="round"></path>
-                    </g>
+                <svg class="cf-hd-svg" width="36" height="36" viewBox="0 0 64 64" fill="none">
+                    <path d="M46 17A20 20 0 1 0 46 47" stroke="#1d4ed8" stroke-width="6" stroke-linecap="round"></path>
+                    <rect x="21" y="35" width="4.2" height="9" rx="1.2" fill="#22c55e"></rect>
+                    <rect x="27.5" y="30" width="4.2" height="14" rx="1.2" fill="#16a34a"></rect>
+                    <rect x="34" y="25" width="4.2" height="19" rx="1.2" fill="#059669"></rect>
+                    <path d="M16 37C23 23 36 14 51 10" stroke="#16a34a" stroke-width="4" stroke-linecap="round"></path>
+                    <polygon points="54,9 44,9 49.5,17.5" fill="#22c55e"></polygon>
                 </svg>
             </div>
         </div>
@@ -1785,43 +1814,24 @@
     </div>
 </div>
 
-<!-- 1. PREMIUM ANIMATED LOGIN / SIGN UP SCREEN WITH GREEN INCOME & RED EXPENSE FLOW -->
+<!-- 1. LOGIN SCREEN WITH HD CASHFLOW LOGO & TEXT ANIMATION (NO BLACK) -->
 <div class="login-wrapper" id="loginScreen">
-    <div class="login-flow-bg" aria-hidden="true">
-        <span class="flow-amt inc-flow">+ ₹1,200</span>
-        <span class="flow-amt exp-flow">- ₹350</span>
-        <span class="flow-amt inc-flow">+ ₹5,000</span>
-        <span class="flow-amt exp-flow">- ₹850</span>
-        <span class="flow-amt inc-flow">+ ₹750</span>
-        <span class="flow-amt exp-flow">- ₹1,400</span>
-        <span class="flow-amt inc-flow">+ ₹2,500</span>
-        <span class="flow-amt exp-flow">- ₹220</span>
-        <span class="flow-amt inc-flow">+ ₹900</span>
-        <span class="flow-amt exp-flow">- ₹600</span>
-    </div>
-
     <div class="login-box">
-        <div class="login-logo-row">
-            <div class="brand-logo-wrap">
-                <svg width="32" height="32" viewBox="0 0 64 64" fill="none">
-                    <g class="cf-bank-roof">
-                        <polygon points="30,6 12,15 48,15" fill="#2dd4bf"></polygon>
-                        <rect x="14" y="15" width="32" height="3.5" fill="#14b8a6"></rect>
-                        <rect x="16" y="18.5" width="3.8" height="12.5" rx="1" fill="#2dd4bf"></rect>
-                        <rect x="23.5" y="18.5" width="3.8" height="12.5" rx="1" fill="#2dd4bf"></rect>
-                        <rect x="31" y="18.5" width="3.8" height="12.5" rx="1" fill="#2dd4bf"></rect>
-                        <rect x="38.5" y="18.5" width="3.8" height="12.5" rx="1" fill="#2dd4bf"></rect>
-                        <rect x="12" y="31" width="36" height="3.5" rx="1" fill="#14b8a6"></rect>
-                    </g>
-                    <g class="cf-rupee-flow">
-                        <text x="45" y="29" fill="#15803d" font-size="16" font-weight="900">₹</text>
-                    </g>
-                    <g class="cf-hand-base">
-                        <path d="M9 47C12 44 17 43 22 45L35 49C38 50 41 48 44 45L52 39C54 38 56.5 40 55 42.5L46 52C43 55 38 56 33 55L17 52L9 54Z" fill="#ffffff" stroke="#0f172a" stroke-width="3.6" stroke-linejoin="round"></path>
-                    </g>
-                </svg>
-            </div>
-            <span class="login-brand-text">CashFlow</span>
+        <div class="login-cf-showcase">
+            <div class="login-cf-swirl" aria-hidden="true"></div>
+            <svg class="cf-hd-svg" width="38" height="38" viewBox="0 0 64 64" fill="none" style="position:relative;z-index:1;flex-shrink:0;">
+                <path class="login-cf-ring-c" d="M46 17A20 20 0 1 0 46 47" stroke="#1d4ed8" stroke-width="6.5" stroke-linecap="round"></path>
+                <g class="login-cf-bars">
+                    <rect x="21" y="35" width="4.2" height="9" rx="1.2" fill="#22c55e"></rect>
+                    <rect x="27.5" y="30" width="4.2" height="14" rx="1.2" fill="#16a34a"></rect>
+                    <rect x="34" y="25" width="4.2" height="19" rx="1.2" fill="#059669"></rect>
+                </g>
+                <g class="login-cf-arrow">
+                    <path d="M16 37C23 23 36 14 51 10" stroke="#16a34a" stroke-width="4" stroke-linecap="round"></path>
+                    <polygon points="54,9 44,9 49.5,17.5" fill="#22c55e"></polygon>
+                </g>
+            </svg>
+            <span class="login-cf-wordmark">Cashflow</span>
         </div>
         <div class="brand-slogan">Track Every Rupee, Grow Every Day</div>
 
@@ -1879,22 +1889,13 @@
         <div class="header-shell">
             <div class="header-left">
                 <div class="brand-logo-wrap">
-                    <svg width="32" height="32" viewBox="0 0 64 64" fill="none">
-                        <g class="cf-bank-roof">
-                            <polygon points="30,6 12,15 48,15" fill="#2dd4bf"></polygon>
-                            <rect x="14" y="15" width="32" height="3.5" fill="#14b8a6"></rect>
-                            <rect x="16" y="18.5" width="3.8" height="12.5" rx="1" fill="#2dd4bf"></rect>
-                            <rect x="23.5" y="18.5" width="3.8" height="12.5" rx="1" fill="#2dd4bf"></rect>
-                            <rect x="31" y="18.5" width="3.8" height="12.5" rx="1" fill="#2dd4bf"></rect>
-                            <rect x="38.5" y="18.5" width="3.8" height="12.5" rx="1" fill="#2dd4bf"></rect>
-                            <rect x="12" y="31" width="36" height="3.5" rx="1" fill="#14b8a6"></rect>
-                        </g>
-                        <g class="cf-rupee-flow">
-                            <text x="45" y="29" fill="#15803d" font-size="16" font-weight="900">₹</text>
-                        </g>
-                        <g class="cf-hand-base">
-                            <path d="M9 47C12 44 17 43 22 45L35 49C38 50 41 48 44 45L52 39C54 38 56.5 40 55 42.5L46 52C43 55 38 56 33 55L17 52L9 54Z" fill="#ffffff" stroke="#0f172a" stroke-width="3.6" stroke-linejoin="round"></path>
-                        </g>
+                    <svg class="cf-hd-svg" width="30" height="30" viewBox="0 0 64 64" fill="none">
+                        <path d="M46 17A20 20 0 1 0 46 47" stroke="#1d4ed8" stroke-width="6.5" stroke-linecap="round"></path>
+                        <rect x="21" y="35" width="4.2" height="9" rx="1.2" fill="#22c55e"></rect>
+                        <rect x="27.5" y="30" width="4.2" height="14" rx="1.2" fill="#16a34a"></rect>
+                        <rect x="34" y="25" width="4.2" height="19" rx="1.2" fill="#059669"></rect>
+                        <path d="M16 37C23 23 36 14 51 10" stroke="#16a34a" stroke-width="4" stroke-linecap="round"></path>
+                        <polygon points="54,9 44,9 49.5,17.5" fill="#22c55e"></polygon>
                     </svg>
                 </div>
                 <div class="brand-info">
@@ -2202,20 +2203,44 @@
                         <span class="circle-icon icon-exp">−</span>
                         <span data-i18n="recordExpense">Record Expense</span>
                     </div>
+                    <div class="split-mode-toggle" role="group" aria-label="Payment Mode">
+                        <button type="button" id="expModeSingleBtn" class="split-mode-btn active" onclick="setExpensePaymentMode('single')">Single</button>
+                        <button type="button" id="expModeSplitBtn" class="split-mode-btn" onclick="setExpensePaymentMode('split')">Cash + Bank</button>
+                    </div>
                 </div>
                 <form id="expenseForm">
                     <div class="record-form-grid">
                         <div class="form-group">
                             <label for="expAmount" data-i18n="amountLabel">Amount (₹)</label>
                             <div class="amount-calc-row">
-                                <input type="number" id="expAmount" step="0.01" min="0.01" placeholder="0.00" required>
+                                <input type="number" id="expAmount" step="0.01" min="0.01" placeholder="0.00" oninput="syncSplitFromTotal()" required>
                                 <button type="button" class="calc-mini-btn" onclick="openQuickCalc('expAmount')" title="Open Quick Calculator">🧮</button>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="expSingleAccountGroup">
                             <label for="expAccount" data-i18n="paidFromLabel">Paid From Account (Cash / Bank)</label>
                             <select id="expAccount" required></select>
                         </div>
+
+                        <!-- Split Payment (Cash + Bank) Box -->
+                        <div class="split-payment-box" id="expSplitBox">
+                            <div class="split-grid">
+                                <div class="form-group">
+                                    <label for="expSplitCashAmt">Cash Amount (₹)</label>
+                                    <input type="number" id="expSplitCashAmt" step="0.01" min="0" placeholder="75.00" oninput="syncSplitFromCash()">
+                                </div>
+                                <div class="form-group">
+                                    <label for="expSplitBankAmt">Bank Amount (₹)</label>
+                                    <input type="number" id="expSplitBankAmt" step="0.01" min="0" placeholder="25.00" oninput="syncSplitFromBank()">
+                                </div>
+                                <div class="form-group">
+                                    <label for="expSplitBankAccount">Bank Account</label>
+                                    <select id="expSplitBankAccount"></select>
+                                </div>
+                            </div>
+                            <div class="split-summary-note" id="expSplitStatusText">Split Total: ₹0.00 / ₹0.00</div>
+                        </div>
+
                         <div class="form-group">
                             <label for="expCategory" data-i18n="categoryLabel">Category</label>
                             <select id="expCategory" required></select>
@@ -2791,74 +2816,8 @@
                     </div>
                     <div id="sqlUnlockedPanel" style="display:none;">
                         <div class="form-group">
-                            <textarea id="supabaseSqlBox" rows="16" readonly>-- 1. Main App State Backup Table
-create table if not exists public.cashflow_state (
-    id text primary key,
-    user_name text,
-    payload jsonb not null,
-    updated_at timestamptz default now()
-);
-
--- 2. User Account Profile Table (Sign Up / Login Details)
-create table if not exists public.cashflow_users (
-    id text primary key,
-    name text not null,
-    salt text not null,
-    pass_hash text not null,
-    pin_hash text,
-    created_at timestamptz default now(),
-    updated_at timestamptz default now()
-);
-
--- 3. Bank & Cash Accounts Table
-create table if not exists public.cashflow_accounts (
-    id text primary key,
-    name text not null,
-    type text not null,
-    opening numeric(14,2) default 0,
-    created_at text,
-    updated_at timestamptz default now()
-);
-
--- 4. Full Transaction History Table
-create table if not exists public.cashflow_transactions (
-    id bigint primary key,
-    date text not null,
-    type text not null,
-    category text not null,
-    account_id text not null,
-    to_account_id text,
-    amount numeric(14,2) not null,
-    description text,
-    updated_at timestamptz default now()
-);
-
-alter table public.cashflow_state enable row level security;
-alter table public.cashflow_users enable row level security;
-alter table public.cashflow_accounts enable row level security;
-alter table public.cashflow_transactions enable row level security;
-
-grant usage on schema public to anon, authenticated;
-grant select, insert, update, delete on table public.cashflow_state to anon, authenticated;
-grant select, insert, update, delete on table public.cashflow_users to anon, authenticated;
-grant select, insert, update, delete on table public.cashflow_accounts to anon, authenticated;
-grant select, insert, update, delete on table public.cashflow_transactions to anon, authenticated;
-
-drop policy if exists "cashflow_state_all" on public.cashflow_state;
-create policy "cashflow_state_all" on public.cashflow_state
-for all to anon, authenticated using (true) with check (true);
-
-drop policy if exists "cashflow_users_all" on public.cashflow_users;
-create policy "cashflow_users_all" on public.cashflow_users
-for all to anon, authenticated using (true) with check (true);
-
-drop policy if exists "cashflow_accounts_all" on public.cashflow_accounts;
-create policy "cashflow_accounts_all" on public.cashflow_accounts
-for all to anon, authenticated using (true) with check (true);
-
-drop policy if exists "cashflow_transactions_all" on public.cashflow_transactions;
-create policy "cashflow_transactions_all" on public.cashflow_transactions
-for all to anon, authenticated using (true) with check (true);</textarea>
+                            <textarea id="supabaseSqlBox" rows="16" readonly>-- Multi-User Supabase Schema
+-- Scoped per user_id so users cannot overwrite or read each other's data.</textarea>
                         </div>
                         <button type="button" class="btn btn-secondary" style="margin-top:10px;" onclick="lockSupabaseSql()">Hide SQL Script</button>
                     </div>
@@ -3197,11 +3156,23 @@ for all to anon, authenticated using (true) with check (true);</textarea>
 <div class="modal-overlay" id="forgotPasswordModal">
     <div class="modal-box" style="text-align: left;">
         <h4 style="text-align:center;">Reset Password</h4>
-        <p style="text-align:center;">Enter your Recovery PIN (or leave blank if no PIN was set) and set a new password.</p>
+        <p id="forgotInstructionText" style="text-align:center;">Verify your identity to set a new password.</p>
         <form id="forgotPasswordForm">
             <div class="form-group" style="margin-bottom:10px;">
+                <label for="forgotAccountNameInput">Account Holder Name</label>
+                <input type="text" id="forgotAccountNameInput" placeholder="Enter your registered display name" required>
+            </div>
+            <div class="form-group" id="forgotPinGroup" style="margin-bottom:10px;">
                 <label for="forgotPinInput">Recovery PIN</label>
                 <input type="text" id="forgotPinInput" placeholder="Enter your Recovery PIN">
+            </div>
+            <div class="form-group" id="forgotAltVerifyGroup" style="display:none; margin-bottom:10px;">
+                <label id="forgotAltVerifyLabel" for="forgotAltVerifyInput">Verification Code</label>
+                <div style="display:flex; gap:8px; align-items:center;">
+                    <input type="text" id="forgotAltVerifyInput" placeholder="Enter verification code">
+                    <button type="button" class="btn btn-secondary" style="padding:10px 12px; font-size:0.8rem; flex-shrink:0;" onclick="regenerateRecoveryChallenge()">New Code</button>
+                </div>
+                <small id="forgotChallengeHint" style="color:var(--text-muted); margin-top:4px;"></small>
             </div>
             <div class="form-group" style="margin-bottom:16px;">
                 <label for="forgotNewPassInput">New Password</label>
@@ -3294,7 +3265,7 @@ for all to anon, authenticated using (true) with check (true);</textarea>
 </div>
 
 <script>
-    const STORAGE_KEY = 'cashflow_repayment_log_eye_icon_v1';
+    const STORAGE_KEY = 'cashflow_split_payment_v1';
     const DEFAULT_LOADING_MS = 2000;
     const IDLE_TIMEOUT_MS = 120000;
 
@@ -3357,6 +3328,68 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         }
     };
 
+    let expensePaymentMode = 'single';
+
+    function setExpensePaymentMode(mode) {
+        expensePaymentMode = mode === 'split' ? 'split' : 'single';
+        const isSplit = expensePaymentMode === 'split';
+        document.getElementById('expModeSingleBtn').classList.toggle('active', !isSplit);
+        document.getElementById('expModeSplitBtn').classList.toggle('active', isSplit);
+        document.getElementById('expSingleAccountGroup').style.display = isSplit ? 'none' : 'flex';
+        document.getElementById('expAccount').required = !isSplit;
+        document.getElementById('expSplitBox').classList.toggle('active', isSplit);
+        document.getElementById('expSplitCashAmt').required = isSplit;
+        document.getElementById('expSplitBankAmt').required = isSplit;
+        document.getElementById('expSplitBankAccount').required = isSplit;
+        if (isSplit) {
+            syncSplitFromTotal();
+        }
+    }
+
+    function syncSplitFromTotal() {
+        if (expensePaymentMode !== 'split') return;
+        const total = parseFloat(document.getElementById('expAmount').value) || 0;
+        const cashEl = document.getElementById('expSplitCashAmt');
+        const bankEl = document.getElementById('expSplitBankAmt');
+        const cashVal = parseFloat(cashEl.value) || 0;
+        if (total > 0 && cashVal === 0 && (!bankEl.value || parseFloat(bankEl.value) === 0)) {
+            cashEl.value = total.toFixed(2);
+            bankEl.value = '0.00';
+        } else if (total > 0 && cashVal <= total) {
+            bankEl.value = Math.max(0, total - cashVal).toFixed(2);
+        }
+        updateSplitStatusText();
+    }
+
+    function syncSplitFromCash() {
+        const total = parseFloat(document.getElementById('expAmount').value) || 0;
+        const cashVal = parseFloat(document.getElementById('expSplitCashAmt').value) || 0;
+        if (total > 0) {
+            document.getElementById('expSplitBankAmt').value = Math.max(0, total - cashVal).toFixed(2);
+        }
+        updateSplitStatusText();
+    }
+
+    function syncSplitFromBank() {
+        const total = parseFloat(document.getElementById('expAmount').value) || 0;
+        const bankVal = parseFloat(document.getElementById('expSplitBankAmt').value) || 0;
+        if (total > 0) {
+            document.getElementById('expSplitCashAmt').value = Math.max(0, total - bankVal).toFixed(2);
+        }
+        updateSplitStatusText();
+    }
+
+    function updateSplitStatusText() {
+        const total = parseFloat(document.getElementById('expAmount').value) || 0;
+        const cashVal = parseFloat(document.getElementById('expSplitCashAmt').value) || 0;
+        const bankVal = parseFloat(document.getElementById('expSplitBankAmt').value) || 0;
+        const sum = cashVal + bankVal;
+        const statusEl = document.getElementById('expSplitStatusText');
+        if (statusEl) {
+            statusEl.textContent = `Cash ₹${cashVal.toFixed(2)} + Bank ₹${bankVal.toFixed(2)} = ₹${sum.toFixed(2)} (Total: ₹${total.toFixed(2)})`;
+        }
+    }
+
     function togglePasswordVisibility(inputId, btnEl) {
         const input = document.getElementById(inputId);
         if (!input) return;
@@ -3396,10 +3429,20 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         return Boolean(monthStr && monthStr > getCurrentMonthISO());
     }
 
+    function generateUserId() {
+        if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+            return 'usr_' + window.crypto.randomUUID();
+        }
+        return 'usr_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 10);
+    }
+
     function getDefaultData(existingUser = null) {
         const todayISO = getTodayISO();
+        const normalizedUser = existingUser
+            ? Object.assign({ id: existingUser.id || generateUserId() }, existingUser)
+            : null;
         return {
-            user: existingUser,
+            user: normalizedUser,
             language: 'en',
             storageMode: 'local',
             phoneFolderAutoSave: false,
@@ -3412,6 +3455,7 @@ for all to anon, authenticated using (true) with check (true);</textarea>
             supabase: { url: '', key: '', table: 'cashflow_state' },
             recurringBills: [],
             loans: [],
+            deletedTransactionIds: [],
             accounts: [
                 { id: 'cash', name: 'Cash Wallet', type: 'cash', opening: 0, createdAt: todayISO },
                 { id: 'bank_primary', name: 'Primary Bank Account', type: 'bank', opening: 0, createdAt: todayISO }
@@ -3432,9 +3476,13 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         appData.budget = Object.assign(defaults.budget, appData.budget || {});
         appData.branding = Object.assign(defaults.branding, appData.branding || {});
         appData.supabase = Object.assign(defaults.supabase, appData.supabase || {});
+        if (appData.user && !appData.user.id) {
+            appData.user.id = generateUserId();
+        }
         if (!Array.isArray(appData.loans)) appData.loans = [];
         if (!Array.isArray(appData.recurringBills)) appData.recurringBills = [];
         if (!Array.isArray(appData.transactions)) appData.transactions = [];
+        if (!Array.isArray(appData.deletedTransactionIds)) appData.deletedTransactionIds = [];
         if (!Array.isArray(appData.accounts) || appData.accounts.length === 0) appData.accounts = defaults.accounts;
         appData.accounts.forEach(a => {
             if (!a.createdAt) a.createdAt = getTodayISO();
@@ -3450,6 +3498,15 @@ for all to anon, authenticated using (true) with check (true);</textarea>
     let idleTimer = null;
     let linkedFolderHandle = null;
     let activeCalcTargetInputId = null;
+    let activeRecoveryCode = '';
+
+    function getActiveUserId() {
+        if (!appData.user) return null;
+        if (!appData.user.id) {
+            appData.user.id = generateUserId();
+        }
+        return String(appData.user.id);
+    }
 
     function formatCurrency(val) {
         if (appData.privacyMode) return '₹****.**';
@@ -3472,7 +3529,6 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         if (iconEl) iconEl.textContent = hidden ? '🙈' : '👁';
     }
 
-    /* Quick Calculator Popup Logic */
     function openQuickCalc(targetInputId) {
         activeCalcTargetInputId = targetInputId;
         const srcInput = document.getElementById(targetInputId);
@@ -3497,8 +3553,8 @@ for all to anon, authenticated using (true) with check (true);</textarea>
 
     function calcAppend(ch) {
         const disp = document.getElementById('calcExprDisplay');
-        if (disp.value === '0' && /[0-9.]/.test(ch)) {
-            disp.value = ch;
+        if (disp.value === '0') {
+            disp.value = /[0-9]/.test(ch) ? ch : (ch === '.' ? '0.' : '0' + ch);
         } else {
             disp.value += ch;
         }
@@ -3508,7 +3564,10 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         const disp = document.getElementById('calcExprDisplay');
         try {
             const clean = disp.value.replace(/[^0-9+\-*/.]/g, '');
-            if (!clean) return;
+            if (!clean || /[+\-*/.]$/.test(clean)) {
+                disp.value = '0';
+                return;
+            }
             const res = Function('"use strict"; return (' + clean + ')')();
             if (typeof res === 'number' && Number.isFinite(res)) {
                 disp.value = String(parseFloat(res.toFixed(2)));
@@ -3525,7 +3584,10 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         const val = parseFloat(document.getElementById('calcExprDisplay').value);
         if (activeCalcTargetInputId && !isNaN(val) && val > 0) {
             const target = document.getElementById(activeCalcTargetInputId);
-            if (target) target.value = val.toFixed(2);
+            if (target) {
+                target.value = val.toFixed(2);
+                if (activeCalcTargetInputId === 'expAmount') syncSplitFromTotal();
+            }
         }
         closeQuickCalc();
     }
@@ -3708,7 +3770,7 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         if (appData.phoneFolderAutoSave && isAppUnlocked()) {
             saveDataToPhoneFolderNow(true);
         }
-        if (appData.storageMode === 'supabase' && appData.supabase.url && appData.supabase.key) {
+        if (appData.storageMode === 'supabase' && appData.supabase.url && appData.supabase.key && getActiveUserId()) {
             syncToSupabase(true);
         }
     }
@@ -3733,12 +3795,7 @@ for all to anon, authenticated using (true) with check (true);</textarea>
 
     function renderStorageModeUI() {
         const isSb = appData.storageMode === 'supabase';
-        const localBtn = document.getElementById('storageModeLocalBtn');
-        const sbBtn = document.getElementById('storageModeSupabaseBtn');
         const summaryEl = document.getElementById('storageModeSummary');
-
-        if (localBtn) localBtn.classList.toggle('selected', !isSb);
-        if (sbBtn) sbBtn.classList.toggle('selected', isSb);
         if (summaryEl) {
             summaryEl.textContent = isSb
                 ? 'Active: 2. Supabase Storage'
@@ -3869,6 +3926,7 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         if (!appData.user) {
             setAuthMode('signup');
         } else {
+            if (!appData.user.id) appData.user.id = generateUserId();
             document.getElementById('welcomeUserTitle').textContent = `Welcome, ${appData.user.name}`;
             setAuthMode('login');
         }
@@ -3879,11 +3937,25 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         const name = document.getElementById('setupName').value.trim();
         const password = document.getElementById('setupPass').value;
         const pin = document.getElementById('setupPin').value.trim();
+        if (!name || !password) return;
+
         runAfterLoading('Creating account...', async () => {
+            const existingId = (appData.user && appData.user.id) ? appData.user.id : generateUserId();
+            const isDifferentUser = Boolean(appData.user && appData.user.name && appData.user.name.trim().toLowerCase() !== name.toLowerCase());
             const salt = generateSalt();
             const passHash = await hashSecret(password, salt);
             const pinHash = pin ? await hashSecret(pin, salt) : '';
-            appData.user = { name, salt, passHash, pinHash };
+
+            if (isDifferentUser) {
+                const keepSupabase = Object.assign({}, appData.supabase);
+                const keepStorageMode = appData.storageMode;
+                appData = getDefaultData({ id: generateUserId(), name, salt, passHash, pinHash });
+                appData.supabase = keepSupabase;
+                appData.storageMode = keepStorageMode;
+            } else {
+                appData.user = { id: existingId, name, salt, passHash, pinHash };
+            }
+
             saveData();
             if (appData.supabase.url && appData.supabase.key) {
                 await syncToSupabase(true);
@@ -3902,6 +3974,8 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         }
         const pass = document.getElementById('loginPass').value;
         const user = appData.user;
+        if (!user.id) user.id = generateUserId();
+
         runAfterLoading('Signing in...', async () => {
             if (user.password !== undefined) {
                 const salt = generateSalt();
@@ -3922,35 +3996,95 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         });
     });
 
+    function generateSixDigitCode() {
+        return String(Math.floor(100000 + Math.random() * 900000));
+    }
+
+    function regenerateRecoveryChallenge() {
+        activeRecoveryCode = generateSixDigitCode();
+        const hintEl = document.getElementById('forgotChallengeHint');
+        if (hintEl) {
+            hintEl.textContent = `No PIN is configured on this account. Enter your registered name and this one-time verification code: ${activeRecoveryCode}`;
+        }
+    }
+
     function openForgotPasswordModal() {
+        if (!appData.user) {
+            showAlert('No account found. Please sign up first.', 'Notice');
+            return;
+        }
+        const hasPin = Boolean(appData.user && appData.user.pinHash);
+        document.getElementById('forgotAccountNameInput').value = '';
         document.getElementById('forgotPinInput').value = '';
+        document.getElementById('forgotAltVerifyInput').value = '';
         document.getElementById('forgotNewPassInput').value = '';
+
+        const pinGroup = document.getElementById('forgotPinGroup');
+        const altGroup = document.getElementById('forgotAltVerifyGroup');
+        const instrEl = document.getElementById('forgotInstructionText');
+
+        if (hasPin) {
+            pinGroup.style.display = 'flex';
+            altGroup.style.display = 'none';
+            instrEl.textContent = 'Enter your registered account name and Recovery PIN to set a new password.';
+        } else {
+            pinGroup.style.display = 'none';
+            altGroup.style.display = 'flex';
+            regenerateRecoveryChallenge();
+            instrEl.textContent = 'No Recovery PIN is set. Verify your account name and the one-time code below.';
+        }
+
         document.getElementById('forgotPasswordModal').style.display = 'flex';
     }
 
     function closeForgotPasswordModal() {
+        activeRecoveryCode = '';
         document.getElementById('forgotPasswordModal').style.display = 'none';
     }
 
     document.getElementById('forgotPasswordForm').addEventListener('submit', async (e) => {
         e.preventDefault();
-        const pinInput = document.getElementById('forgotPinInput').value.trim();
-        const newPass = document.getElementById('forgotNewPassInput').value;
-        if (!newPass) return;
+        if (!appData.user) {
+            showAlert('No account found. Please sign up first.', 'Error');
+            return;
+        }
 
-        const user = appData.user || { name: 'User' };
+        const enteredName = document.getElementById('forgotAccountNameInput').value.trim();
+        const pinInput = document.getElementById('forgotPinInput').value.trim();
+        const altCodeInput = document.getElementById('forgotAltVerifyInput').value.trim();
+        const newPass = document.getElementById('forgotNewPassInput').value;
+
+        if (!enteredName || !newPass) return;
+
+        const expectedName = String(appData.user.name || '').trim().toLowerCase();
+        if (!expectedName || enteredName.toLowerCase() !== expectedName) {
+            showAlert('Account holder name does not match our records.', 'Verification Failed');
+            return;
+        }
+
+        const user = appData.user;
         const salt = user.salt || generateSalt();
 
         if (user.pinHash) {
+            if (!pinInput) {
+                showAlert('Please enter your Recovery PIN.', 'Verification Required');
+                return;
+            }
             const enteredPinHash = await hashSecret(pinInput, salt);
             if (enteredPinHash !== user.pinHash) {
-                showAlert('Recovery PIN does not match.', 'Error');
+                showAlert('Recovery PIN does not match.', 'Verification Failed');
+                return;
+            }
+        } else {
+            if (!activeRecoveryCode || altCodeInput !== activeRecoveryCode) {
+                showAlert('Please enter the exact 6-digit verification code shown for identity verification.', 'Verification Failed');
                 return;
             }
         }
 
         runAfterLoading('Resetting password...', async () => {
             const newSalt = generateSalt();
+            user.id = user.id || generateUserId();
             user.salt = newSalt;
             user.passHash = await hashSecret(newPass, newSalt);
             if (pinInput) {
@@ -3980,6 +4114,10 @@ for all to anon, authenticated using (true) with check (true);</textarea>
     }
 
     function unlockApp() {
+        if (appData.user && !appData.user.id) {
+            appData.user.id = generateUserId();
+            saveData();
+        }
         document.getElementById('loginScreen').style.display = 'none';
         document.getElementById('appContent').style.display = 'block';
         document.getElementById('editUserName').value = appData.user ? appData.user.name : '';
@@ -4174,6 +4312,7 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         renderPhoneFolderUI();
         updateHeaderStatusLight();
         updateLoanTotalPreview();
+        updateSplitStatusText();
         applyLanguage();
     }
 
@@ -4183,6 +4322,7 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         const prevPartAcc = document.getElementById('partPayAccount').value;
         const prevBillAcc = document.getElementById('billPayAccount').value;
         const prevHistAcc = document.getElementById('accountFullHistorySelect').value;
+        const prevSplitBankAcc = document.getElementById('expSplitBankAccount').value;
 
         document.getElementById('incCategory').innerHTML = appData.categories.income
             .map(c => `<option value="${escapeHTML(c)}">${escapeHTML(c)}</option>`).join('');
@@ -4193,8 +4333,14 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         const accWithBalanceOptions = appData.accounts
             .map(a => `<option value="${escapeHTML(a.id)}">${escapeHTML(a.name)} (₹${balances[a.id].toFixed(2)})</option>`).join('');
 
+        const bankOnlyAccounts = appData.accounts.filter(a => a.type !== 'cash');
+        const bankPool = bankOnlyAccounts.length > 0 ? bankOnlyAccounts : appData.accounts;
+        const bankOptions = bankPool
+            .map(a => `<option value="${escapeHTML(a.id)}">${escapeHTML(a.name)} (₹${balances[a.id].toFixed(2)})</option>`).join('');
+
         document.getElementById('incAccount').innerHTML = accWithBalanceOptions;
         document.getElementById('expAccount').innerHTML = accWithBalanceOptions;
+        document.getElementById('expSplitBankAccount').innerHTML = bankOptions;
         document.getElementById('loanAccount').innerHTML = accWithBalanceOptions;
         document.getElementById('partPayAccount').innerHTML = accWithBalanceOptions;
         document.getElementById('billPayAccount').innerHTML = accWithBalanceOptions;
@@ -4204,6 +4350,9 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         document.getElementById('accountFullHistorySelect').innerHTML = appData.accounts
             .map(a => `<option value="${escapeHTML(a.id)}">${escapeHTML(a.name)}</option>`).join('');
 
+        if (prevSplitBankAcc && bankPool.some(a => a.id === prevSplitBankAcc)) {
+            document.getElementById('expSplitBankAccount').value = prevSplitBankAcc;
+        }
         if (prevLoanAcc && appData.accounts.some(a => a.id === prevLoanAcc)) {
             document.getElementById('loanAccount').value = prevLoanAcc;
         }
@@ -4370,7 +4519,12 @@ for all to anon, authenticated using (true) with check (true);</textarea>
     }
 
     function addTransactionEntry(entry) {
-        appData.transactions.push(entry);
+        const numericId = Number(entry.id);
+        if (!Array.isArray(appData.deletedTransactionIds)) appData.deletedTransactionIds = [];
+        appData.deletedTransactionIds = appData.deletedTransactionIds.filter(id => Number(id) !== numericId);
+        if (!appData.transactions.some(t => Number(t.id) === numericId)) {
+            appData.transactions.push(entry);
+        }
         saveData();
         refreshAllUI();
     }
@@ -4419,9 +4573,8 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         e.preventDefault();
         const amount = parseFloat(document.getElementById('expAmount').value);
         const dateVal = document.getElementById('expDate').value;
-        const accountId = document.getElementById('expAccount').value;
-        const balances = calculateAccountBalances();
-        const availableBal = parseFloat(balances[accountId]) || 0;
+        const categoryVal = document.getElementById('expCategory').value;
+        const descVal = document.getElementById('expDesc').value.trim();
 
         if (isFutureDate(dateVal)) {
             showAlert('Future dates are not allowed. You can only record entries for today or past dates.', 'Date Restriction');
@@ -4431,6 +4584,68 @@ for all to anon, authenticated using (true) with check (true);</textarea>
             showAlert('Please enter a valid positive amount.', 'Validation Error');
             return;
         }
+
+        const balances = calculateAccountBalances();
+
+        if (expensePaymentMode === 'split') {
+            const cashAmt = parseFloat(document.getElementById('expSplitCashAmt').value) || 0;
+            const bankAmt = parseFloat(document.getElementById('expSplitBankAmt').value) || 0;
+            const bankAccId = document.getElementById('expSplitBankAccount').value;
+            const cashAccId = (appData.accounts.find(a => a.id === 'cash') || appData.accounts[0]).id;
+
+            if (cashAmt < 0 || bankAmt < 0 || Math.abs((cashAmt + bankAmt) - amount) > 0.01) {
+                showAlert(`Split amounts (Cash ₹${cashAmt.toFixed(2)} + Bank ₹${bankAmt.toFixed(2)}) must equal total amount ₹${amount.toFixed(2)}.`, 'Split Error');
+                return;
+            }
+            if (cashAmt > 0 && cashAmt > (parseFloat(balances[cashAccId]) || 0)) {
+                showAlert(`Insufficient balance in ${getAccountName(cashAccId)}! Available: ₹${(balances[cashAccId] || 0).toFixed(2)}, Needed: ₹${cashAmt.toFixed(2)}.`, 'Insufficient Balance');
+                return;
+            }
+            if (bankAmt > 0 && bankAmt > (parseFloat(balances[bankAccId]) || 0)) {
+                showAlert(`Insufficient balance in ${getAccountName(bankAccId)}! Available: ₹${(balances[bankAccId] || 0).toFixed(2)}, Needed: ₹${bankAmt.toFixed(2)}.`, 'Insufficient Balance');
+                return;
+            }
+
+            const baseId = Date.now();
+            const entriesToAdd = [];
+            if (cashAmt > 0) {
+                entriesToAdd.push({
+                    id: baseId,
+                    date: dateVal,
+                    type: 'expense',
+                    category: categoryVal,
+                    accountId: cashAccId,
+                    amount: cashAmt,
+                    desc: `${descVal} (Split Cash ₹${cashAmt.toFixed(2)} + ${getAccountName(bankAccId)} ₹${bankAmt.toFixed(2)})`
+                });
+            }
+            if (bankAmt > 0) {
+                entriesToAdd.push({
+                    id: baseId + 1,
+                    date: dateVal,
+                    type: 'expense',
+                    category: categoryVal,
+                    accountId: bankAccId,
+                    amount: bankAmt,
+                    desc: `${descVal} (Split ${getAccountName(bankAccId)} ₹${bankAmt.toFixed(2)} + Cash ₹${cashAmt.toFixed(2)})`
+                });
+            }
+
+            runAfterLoading('Saving split expense...', () => {
+                entriesToAdd.forEach(item => addTransactionEntry(item));
+                document.getElementById('expAmount').value = '';
+                document.getElementById('expSplitCashAmt').value = '';
+                document.getElementById('expSplitBankAmt').value = '';
+                document.getElementById('expDesc').value = '';
+                setExpensePaymentMode('single');
+            }, () => {
+                showAlert(`Split expense saved (Cash ₹${cashAmt.toFixed(2)} + ${getAccountName(bankAccId)} ₹${bankAmt.toFixed(2)})!`);
+            });
+            return;
+        }
+
+        const accountId = document.getElementById('expAccount').value;
+        const availableBal = parseFloat(balances[accountId]) || 0;
 
         if (amount > availableBal) {
             showAlert(
@@ -4444,10 +4659,10 @@ for all to anon, authenticated using (true) with check (true);</textarea>
             id: Date.now(),
             date: dateVal,
             type: 'expense',
-            category: document.getElementById('expCategory').value,
+            category: categoryVal,
             accountId,
             amount,
-            desc: document.getElementById('expDesc').value.trim()
+            desc: descVal
         };
 
         const finishSave = () => {
@@ -4660,7 +4875,7 @@ for all to anon, authenticated using (true) with check (true);</textarea>
 
         showConfirm(`Mark "${bill.title}" (₹${amt.toFixed(2)}) as paid from ${getAccountName(accId)}?`, () => {
             runAfterLoading('Recording bill payment...', () => {
-                appData.transactions.push({
+                addTransactionEntry({
                     id: Date.now(),
                     date: getTodayISO(),
                     type: 'expense',
@@ -4669,8 +4884,6 @@ for all to anon, authenticated using (true) with check (true);</textarea>
                     amount: amt,
                     desc: `Bill Paid: ${bill.title}`
                 });
-                saveData();
-                refreshAllUI();
             }, () => {
                 showAlert(`"${bill.title}" recorded as paid in Expenses!`);
             });
@@ -4726,7 +4939,7 @@ for all to anon, authenticated using (true) with check (true);</textarea>
 
         runAfterLoading('Recording part payment...', () => {
             const txType = ln.direction === 'given' ? 'loan_taken' : 'loan_given';
-            appData.transactions.push({
+            addTransactionEntry({
                 id: Date.now(),
                 date: getTodayISO(),
                 type: txType,
@@ -4811,16 +5024,29 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         }
     });
 
+    function recordDeletedTransactionId(txId) {
+        const numId = Number(txId);
+        if (!Number.isFinite(numId)) return;
+        if (!Array.isArray(appData.deletedTransactionIds)) appData.deletedTransactionIds = [];
+        if (!appData.deletedTransactionIds.some(d => Number(d) === numId)) {
+            appData.deletedTransactionIds.push(numId);
+        }
+    }
+
     async function deleteTransactionFromSupabase(txId) {
         const { url, key } = appData.supabase || {};
-        if (!url || !key) return;
-        const res = await fetch(`${url}/rest/v1/cashflow_transactions?id=eq.${encodeURIComponent(Number(txId))}`, {
-            method: 'DELETE',
-            headers: {
-                'apikey': key,
-                'Authorization': `Bearer ${key}`
+        const userId = getActiveUserId();
+        if (!url || !key || !userId) return;
+        const res = await fetch(
+            `${url}/rest/v1/cashflow_transactions?id=eq.${encodeURIComponent(Number(txId))}&user_id=eq.${encodeURIComponent(userId)}`,
+            {
+                method: 'DELETE',
+                headers: {
+                    'apikey': key,
+                    'Authorization': `Bearer ${key}`
+                }
             }
-        });
+        );
         if (!res.ok) {
             const errText = await res.text();
             throw new Error(`Supabase delete failed (${res.status}): ${errText}`);
@@ -4837,8 +5063,9 @@ for all to anon, authenticated using (true) with check (true);</textarea>
             showLoading('Deleting...', 0);
             let delErr = null;
             try {
+                recordDeletedTransactionId(id);
                 appData.transactions = appData.transactions.filter(t => Number(t.id) !== Number(id));
-                if (appData.supabase && appData.supabase.url && appData.supabase.key) {
+                if (appData.supabase && appData.supabase.url && appData.supabase.key && getActiveUserId()) {
                     await deleteTransactionFromSupabase(id);
                 }
                 saveData();
@@ -5062,7 +5289,7 @@ for all to anon, authenticated using (true) with check (true);</textarea>
             return;
         }
         runAfterLoading('Saving transfer...', () => {
-            appData.transactions.push({
+            addTransactionEntry({
                 id: Date.now(),
                 date: dateVal,
                 type: 'transfer',
@@ -5072,10 +5299,8 @@ for all to anon, authenticated using (true) with check (true);</textarea>
                 amount,
                 desc: descVal
             });
-            saveData();
             document.getElementById('trfAmount').value = '';
             document.getElementById('trfDesc').value = '';
-            refreshAllUI();
         }, () => {
             showAlert('Self transfer recorded successfully!');
         });
@@ -5332,10 +5557,11 @@ for all to anon, authenticated using (true) with check (true);</textarea>
             try {
                 const linkedTxId = ln && ln.txId;
                 if (linkedTxId) {
+                    recordDeletedTransactionId(linkedTxId);
                     appData.transactions = appData.transactions.filter(t => Number(t.id) !== Number(linkedTxId));
                 }
                 appData.loans.splice(index, 1);
-                if (linkedTxId && appData.supabase && appData.supabase.url && appData.supabase.key) {
+                if (linkedTxId && appData.supabase && appData.supabase.url && appData.supabase.key && getActiveUserId()) {
                     try {
                         await deleteTransactionFromSupabase(linkedTxId);
                     } catch (err) {
@@ -5409,9 +5635,9 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         }
     });
 
-    async function sbUpsert(url, key, tableName, rows) {
+    async function sbUpsert(url, key, tableName, rows, conflictCol = 'id') {
         if (!rows || (Array.isArray(rows) && rows.length === 0)) return;
-        const res = await fetch(`${url}/rest/v1/${encodeURIComponent(tableName)}?on_conflict=id`, {
+        const res = await fetch(`${url}/rest/v1/${encodeURIComponent(tableName)}?on_conflict=${encodeURIComponent(conflictCol)}`, {
             method: 'POST',
             headers: {
                 'apikey': key,
@@ -5430,17 +5656,35 @@ for all to anon, authenticated using (true) with check (true);</textarea>
     async function syncToSupabase(silent = false) {
         const { url, key, table } = appData.supabase || {};
         const statusEl = document.getElementById('cloudSyncStatus');
+        const userId = getActiveUserId();
         if (!url || !key) {
             if (!silent) showAlert('Please enter Supabase URL and Anon Key first.', 'Notice');
             return;
         }
+        if (!userId) {
+            if (!silent) showAlert('Please sign in first to sync your user data.', 'Notice');
+            return;
+        }
         if (!silent) showLoading('Syncing Account & History...', 0);
-        if (statusEl) statusEl.textContent = 'Syncing account & transactions to Supabase...';
+        if (statusEl) statusEl.textContent = 'Syncing user data & transactions to Supabase...';
         try {
             const nowIso = new Date().toISOString();
+            const deletedIds = Array.isArray(appData.deletedTransactionIds)
+                ? appData.deletedTransactionIds.map(n => Number(n)).filter(Number.isFinite)
+                : [];
+
+            const uniqueTxMap = new Map();
+            (appData.transactions || []).forEach(t => {
+                const txId = Number(t.id);
+                if (Number.isFinite(txId) && !deletedIds.includes(txId)) {
+                    uniqueTxMap.set(txId, Object.assign({}, t, { id: txId }));
+                }
+            });
+            appData.transactions = Array.from(uniqueTxMap.values());
 
             await sbUpsert(url, key, table || 'cashflow_state', {
-                id: 'default_user_state',
+                id: `state_${userId}`,
+                user_id: userId,
                 user_name: appData.user ? appData.user.name : 'User',
                 payload: appData,
                 updated_at: nowIso
@@ -5448,7 +5692,8 @@ for all to anon, authenticated using (true) with check (true);</textarea>
 
             if (appData.user) {
                 await sbUpsert(url, key, 'cashflow_users', {
-                    id: 'default_user',
+                    id: userId,
+                    user_id: userId,
                     name: appData.user.name || 'User',
                     salt: appData.user.salt || '',
                     pass_hash: appData.user.passHash || '',
@@ -5459,7 +5704,9 @@ for all to anon, authenticated using (true) with check (true);</textarea>
 
             if (Array.isArray(appData.accounts) && appData.accounts.length > 0) {
                 const accRows = appData.accounts.map(a => ({
-                    id: String(a.id),
+                    id: `${userId}__${String(a.id)}`,
+                    user_id: userId,
+                    account_key: String(a.id),
                     name: a.name,
                     type: a.type,
                     opening: parseFloat(a.opening) || 0,
@@ -5469,9 +5716,44 @@ for all to anon, authenticated using (true) with check (true);</textarea>
                 await sbUpsert(url, key, 'cashflow_accounts', accRows);
             }
 
-            if (Array.isArray(appData.transactions) && appData.transactions.length > 0) {
+            for (const delId of deletedIds) {
+                await fetch(
+                    `${url}/rest/v1/cashflow_transactions?id=eq.${encodeURIComponent(delId)}&user_id=eq.${encodeURIComponent(userId)}`,
+                    {
+                        method: 'DELETE',
+                        headers: {
+                            'apikey': key,
+                            'Authorization': `Bearer ${key}`
+                        }
+                    }
+                );
+            }
+
+            const headers = { 'apikey': key, 'Authorization': `Bearer ${key}` };
+            const existingRemoteRes = await fetch(
+                `${url}/rest/v1/cashflow_transactions?user_id=eq.${encodeURIComponent(userId)}&select=id`,
+                { headers }
+            );
+            if (existingRemoteRes.ok) {
+                const remoteRows = await existingRemoteRes.json();
+                if (Array.isArray(remoteRows)) {
+                    const activeLocalIds = new Set(appData.transactions.map(t => Number(t.id)));
+                    for (const rRow of remoteRows) {
+                        const rId = Number(rRow.id);
+                        if (!activeLocalIds.has(rId)) {
+                            await fetch(
+                                `${url}/rest/v1/cashflow_transactions?id=eq.${encodeURIComponent(rId)}&user_id=eq.${encodeURIComponent(userId)}`,
+                                { method: 'DELETE', headers }
+                            );
+                        }
+                    }
+                }
+            }
+
+            if (appData.transactions.length > 0) {
                 const txRows = appData.transactions.map(t => ({
                     id: Number(t.id),
+                    user_id: userId,
                     date: t.date,
                     type: t.type,
                     category: t.category,
@@ -5485,11 +5767,11 @@ for all to anon, authenticated using (true) with check (true);</textarea>
             }
 
             updateHeaderStatusLight();
-            if (statusEl) statusEl.textContent = `Account & ${appData.transactions.length} transactions synced: ${new Date().toLocaleTimeString()}`;
+            if (statusEl) statusEl.textContent = `User ${userId} • ${appData.transactions.length} transactions synced: ${new Date().toLocaleTimeString()}`;
             if (!silent) {
                 setTimeout(() => {
                     hideLoading();
-                    showAlert('Account profile & full transaction history synced to Supabase!');
+                    showAlert('User account & transaction history synced cleanly to Supabase!');
                 }, DEFAULT_LOADING_MS);
             }
         } catch (err) {
@@ -5506,39 +5788,60 @@ for all to anon, authenticated using (true) with check (true);</textarea>
     async function pullFromSupabase() {
         const { url, key, table } = appData.supabase || {};
         const statusEl = document.getElementById('cloudSyncStatus');
+        const userId = getActiveUserId();
         if (!url || !key) {
             showAlert('Please enter Supabase URL and Anon Key first.', 'Notice');
             return;
         }
+        if (!userId) {
+            showAlert('No active user ID found. Please sign in first.', 'Notice');
+            return;
+        }
         showLoading('Recovering from Supabase...', 0);
-        if (statusEl) statusEl.textContent = 'Recovering account & history from Supabase...';
+        if (statusEl) statusEl.textContent = 'Recovering user data & history from Supabase...';
         let resultMsg = '';
         let resultTitle = 'Notice';
         try {
             const headers = { 'apikey': key, 'Authorization': `Bearer ${key}` };
-            const res = await fetch(`${url}/rest/v1/${encodeURIComponent(table || 'cashflow_state')}?id=eq.default_user_state&select=payload`, { headers });
+            const encUser = encodeURIComponent(userId);
+            const res = await fetch(
+                `${url}/rest/v1/${encodeURIComponent(table || 'cashflow_state')}?user_id=eq.${encUser}&select=payload`,
+                { headers }
+            );
             if (!res.ok) {
                 const errText = await res.text();
                 throw new Error(`HTTP ${res.status}: ${errText}`);
             }
             const rows = await res.json();
             const sbConfigKeep = Object.assign({}, appData.supabase, { url, key, table });
-            const defaults = getDefaultData(null);
+            const localDeletedSet = new Set(
+                (appData.deletedTransactionIds || []).map(n => Number(n)).filter(Number.isFinite)
+            );
+            const defaults = getDefaultData(appData.user);
 
             if (Array.isArray(rows) && rows.length > 0 && rows[0].payload) {
-                appData = Object.assign(defaults, rows[0].payload);
+                const remotePayload = rows[0].payload;
+                const remoteUserId = remotePayload.user && remotePayload.user.id ? String(remotePayload.user.id) : userId;
+                if (remoteUserId === userId) {
+                    appData = Object.assign(defaults, remotePayload);
+                }
             }
 
+            (appData.deletedTransactionIds || []).forEach(n => {
+                if (Number.isFinite(Number(n))) localDeletedSet.add(Number(n));
+            });
+
             const [uRes, aRes, tRes] = await Promise.all([
-                fetch(`${url}/rest/v1/cashflow_users?id=eq.default_user&select=*`, { headers }),
-                fetch(`${url}/rest/v1/cashflow_accounts?select=*`, { headers }),
-                fetch(`${url}/rest/v1/cashflow_transactions?select=*&order=id.asc`, { headers })
+                fetch(`${url}/rest/v1/cashflow_users?user_id=eq.${encUser}&select=*`, { headers }),
+                fetch(`${url}/rest/v1/cashflow_accounts?user_id=eq.${encUser}&select=*`, { headers }),
+                fetch(`${url}/rest/v1/cashflow_transactions?user_id=eq.${encUser}&select=*&order=id.asc`, { headers })
             ]);
 
             if (uRes.ok) {
                 const uRows = await uRes.json();
-                if (Array.isArray(uRows) && uRows.length > 0) {
+                if (Array.isArray(uRows) && uRows.length > 0 && String(uRows[0].user_id) === userId) {
                     appData.user = {
+                        id: userId,
                         name: uRows[0].name,
                         salt: uRows[0].salt,
                         passHash: uRows[0].pass_hash,
@@ -5550,32 +5853,44 @@ for all to anon, authenticated using (true) with check (true);</textarea>
             if (aRes.ok) {
                 const aRows = await aRes.json();
                 if (Array.isArray(aRows) && aRows.length > 0) {
-                    appData.accounts = aRows.map(r => ({
-                        id: r.id,
-                        name: r.name,
-                        type: r.type,
-                        opening: parseFloat(r.opening) || 0,
-                        createdAt: r.created_at || getTodayISO()
-                    }));
+                    appData.accounts = aRows
+                        .filter(r => String(r.user_id) === userId)
+                        .map(r => ({
+                            id: r.account_key || r.id,
+                            name: r.name,
+                            type: r.type,
+                            opening: parseFloat(r.opening) || 0,
+                            createdAt: r.created_at || getTodayISO()
+                        }));
                 }
             }
 
             if (tRes.ok) {
                 const tRows = await tRes.json();
                 if (Array.isArray(tRows)) {
-                    appData.transactions = tRows.map(r => ({
-                        id: Number(r.id),
-                        date: r.date,
-                        type: r.type,
-                        category: r.category,
-                        accountId: r.account_id,
-                        toAccountId: r.to_account_id || undefined,
-                        amount: parseFloat(r.amount) || 0,
-                        desc: r.description || ''
-                    }));
+                    const txMap = new Map();
+                    tRows
+                        .filter(r => String(r.user_id) === userId && !localDeletedSet.has(Number(r.id)))
+                        .forEach(r => {
+                            const txId = Number(r.id);
+                            if (Number.isFinite(txId)) {
+                                txMap.set(txId, {
+                                    id: txId,
+                                    date: r.date,
+                                    type: r.type,
+                                    category: r.category,
+                                    accountId: r.account_id,
+                                    toAccountId: r.to_account_id || undefined,
+                                    amount: parseFloat(r.amount) || 0,
+                                    desc: r.description || ''
+                                });
+                            }
+                        });
+                    appData.transactions = Array.from(txMap.values());
                 }
             }
 
+            appData.deletedTransactionIds = Array.from(localDeletedSet);
             appData.supabase = sbConfigKeep;
             appData.storageMode = 'supabase';
             if (!Array.isArray(appData.loans)) appData.loans = [];
@@ -5589,8 +5904,8 @@ for all to anon, authenticated using (true) with check (true);</textarea>
                 document.getElementById('editUserName').value = appData.user.name;
                 document.getElementById('welcomeUserTitle').textContent = `Welcome, ${appData.user.name}`;
             }
-            if (statusEl) statusEl.textContent = `Recovered ${appData.transactions.length} transactions: ${new Date().toLocaleTimeString()}`;
-            resultMsg = 'Account & full transaction history recovered from Supabase!';
+            if (statusEl) statusEl.textContent = `Recovered ${appData.transactions.length} transactions for ${userId}: ${new Date().toLocaleTimeString()}`;
+            resultMsg = 'User account & transaction history recovered from Supabase!';
         } catch (err) {
             if (statusEl) statusEl.textContent = `Recovery failed: ${err.message}`;
             resultMsg = `Cloud recovery failed: ${err.message}`;
@@ -5613,6 +5928,7 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         const newPin = document.getElementById('editUserPin').value.trim();
 
         runAfterLoading('Updating profile...', async () => {
+            appData.user.id = appData.user.id || generateUserId();
             appData.user.name = newName;
             const activeSalt = appData.user.salt || generateSalt();
             appData.user.salt = activeSalt;
@@ -5655,7 +5971,12 @@ for all to anon, authenticated using (true) with check (true);</textarea>
     function confirmResetAll() {
         showConfirm('This will erase all transactions, custom banks, loans, bills, and categories while keeping your login account. Continue?', () => {
             runAfterLoading('Resetting data...', () => {
-                appData = getDefaultData(appData.user);
+                const keptUser = appData.user ? Object.assign({}, appData.user, { id: getActiveUserId() }) : null;
+                const keptSb = Object.assign({}, appData.supabase);
+                const keptMode = appData.storageMode;
+                appData = getDefaultData(keptUser);
+                appData.supabase = keptSb;
+                appData.storageMode = keptMode;
                 saveData();
                 refreshAllUI();
             }, () => {
@@ -5676,6 +5997,59 @@ for all to anon, authenticated using (true) with check (true);</textarea>
         });
     }
 
+    function validateBackupPayload(parsed) {
+        if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+            return { valid: false, error: 'Backup file must contain a valid JSON object.' };
+        }
+        if (!Array.isArray(parsed.transactions)) {
+            return { valid: false, error: 'Backup file is missing a valid transactions list.' };
+        }
+        for (let i = 0; i < parsed.transactions.length; i++) {
+            const tx = parsed.transactions[i];
+            if (!tx || typeof tx !== 'object') {
+                return { valid: false, error: `Invalid transaction entry at index ${i}.` };
+            }
+            const amt = parseFloat(tx.amount);
+            if (!Number.isFinite(amt) || amt <= 0) {
+                return { valid: false, error: `Invalid transaction amount at index ${i}.` };
+            }
+            if (typeof tx.date !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(tx.date)) {
+                return { valid: false, error: `Invalid transaction date format at index ${i}.` };
+            }
+            if (typeof tx.type !== 'string' || !tx.type.trim()) {
+                return { valid: false, error: `Missing transaction type at index ${i}.` };
+            }
+        }
+        if (parsed.accounts !== undefined) {
+            if (!Array.isArray(parsed.accounts) || parsed.accounts.length === 0) {
+                return { valid: false, error: 'Backup file has an invalid or empty accounts list.' };
+            }
+            for (let j = 0; j < parsed.accounts.length; j++) {
+                const acc = parsed.accounts[j];
+                if (!acc || typeof acc !== 'object' || !acc.id || !acc.name) {
+                    return { valid: false, error: `Invalid account entry at index ${j}.` };
+                }
+            }
+        }
+        if (parsed.categories !== undefined) {
+            if (
+                !parsed.categories ||
+                typeof parsed.categories !== 'object' ||
+                !Array.isArray(parsed.categories.income) ||
+                !Array.isArray(parsed.categories.expense)
+            ) {
+                return { valid: false, error: 'Backup file has invalid income or expense categories.' };
+            }
+        }
+        if (parsed.loans !== undefined && !Array.isArray(parsed.loans)) {
+            return { valid: false, error: 'Backup file has an invalid loans list.' };
+        }
+        if (parsed.recurringBills !== undefined && !Array.isArray(parsed.recurringBills)) {
+            return { valid: false, error: 'Backup file has an invalid recurring bills list.' };
+        }
+        return { valid: true };
+    }
+
     function restoreBackup(event) {
         const file = event.target.files[0];
         if (!file) return;
@@ -5685,25 +6059,48 @@ for all to anon, authenticated using (true) with check (true);</textarea>
             let errMsg = 'Error reading backup file.';
             try {
                 const parsed = JSON.parse(e.target.result);
-                if (parsed && typeof parsed === 'object' && Array.isArray(parsed.transactions)) {
-                    const defaults = getDefaultData(null);
-                    appData = Object.assign(defaults, parsed);
-                    if (!Array.isArray(appData.loans)) appData.loans = [];
-                    if (!Array.isArray(appData.recurringBills)) appData.recurringBills = [];
-                    if (!Array.isArray(appData.accounts) || appData.accounts.length === 0) appData.accounts = defaults.accounts;
+                const check = validateBackupPayload(parsed);
+                if (!check.valid) {
+                    errMsg = check.error;
+                } else {
+                    const currentUserId = getActiveUserId();
+                    const currentUser = appData.user;
+                    const currentSb = Object.assign({}, appData.supabase);
+                    const currentMode = appData.storageMode;
+                    const defaults = getDefaultData(currentUser);
+
+                    const restoredUser = (parsed.user && typeof parsed.user === 'object' && parsed.user.name)
+                        ? Object.assign({ id: parsed.user.id || currentUserId || generateUserId() }, parsed.user)
+                        : currentUser;
+
+                    const safeUser = (currentUser && currentUserId && restoredUser && restoredUser.id && String(restoredUser.id) !== currentUserId)
+                        ? currentUser
+                        : restoredUser;
+
+                    const merged = Object.assign(defaults, parsed, {
+                        user: safeUser,
+                        supabase: currentSb,
+                        storageMode: currentMode,
+                        budget: Object.assign(defaults.budget, (parsed.budget && typeof parsed.budget === 'object') ? parsed.budget : {}),
+                        branding: Object.assign(defaults.branding, (parsed.branding && typeof parsed.branding === 'object') ? parsed.branding : {})
+                    });
+                    if (!Array.isArray(merged.loans)) merged.loans = [];
+                    if (!Array.isArray(merged.recurringBills)) merged.recurringBills = [];
+                    if (!Array.isArray(merged.deletedTransactionIds)) merged.deletedTransactionIds = [];
+                    if (!Array.isArray(merged.accounts) || merged.accounts.length === 0) merged.accounts = defaults.accounts;
+
+                    appData = merged;
                     saveData();
                     refreshAllUI();
                     ok = true;
-                } else {
-                    errMsg = 'Invalid backup file.';
                 }
             } catch (err) {
-                errMsg = 'Error reading backup file.';
+                errMsg = 'Invalid JSON backup file. Please choose a valid CashFlow backup file.';
             }
             event.target.value = '';
             runAfterLoading('Restoring backup...', null, () => {
                 if (ok) showAlert('Backup restored successfully!');
-                else showAlert(errMsg, 'Error');
+                else showAlert(errMsg, 'Restore Error');
             });
         };
         reader.readAsText(file);
